@@ -1,0 +1,6 @@
+{
+  "name": "EcoGreen Flora - Cây Cảnh & Không Gian Xanh",
+  "description": "Landing page chuyên nghiệp bán cây cảnh lọc không khí, cây phong thủy để bàn với trải nghiệm xem 3D/AR thực tế trước khi mua.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
