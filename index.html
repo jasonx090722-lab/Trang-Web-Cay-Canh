@@ -6,13 +6,13 @@
 
   <!-- SEO & Social Meta Tags -->
   <title>EcoGreen Flora | Cây Cảnh Phong Thủy & Lọc Không Khí - Trải Nghiệm 3D / AR Thực Tế</title>
-  <meta name="description" content="Phủ Xanh Không Gian Sống - Mang Thiên Nhiên & Tài Lộc Vào Nhà Bạn. Chuyên cây văn phòng, cây phong thủy để bàn với mô hình 3D/AR ướm thử vào phòng trước khi mua." />
-  <meta name="keywords" content="cây cảnh, cây phong thủy, cây lọc không khí, cây để bàn văn phòng, xem cây 3D AR, EcoGreen Flora" />
+  <meta name="description" content="Phủ Xanh Không Gian Sống - Mang Thiên Nhiên & Tài Lộc Vào Nhà Bạn. Phong cách Glassmorphism hiện đại kết hợp mô hình 3D/AR ướm thử cây vào phòng trước khi mua." />
+  <meta name="keywords" content="cây cảnh, cây phong thủy, cây lọc không khí, cây để bàn, glassmorphism botanical, xem cây 3D AR, EcoGreen Flora" />
   <meta name="author" content="EcoGreen Flora" />
   <meta property="og:title" content="EcoGreen Flora - Cây Cảnh & Trải Nghiệm 3D / AR Không Gian Sống" />
-  <meta property="og:description" content="Khám phá bộ sưu tập cây cảnh lọc không khí và phong thủy. Ướm thử cây vào phòng bằng 3D/AR sống động." />
+  <meta property="og:description" content="Khám phá bộ sưu tập cây cảnh phong thủy và lọc khí với giao diện kính mờ Glassmorphism sang trọng và mô hình 3D/AR chân thực." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1200&q=80" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Google Analytics GA4 -->
@@ -24,10 +24,10 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display (Hỗ trợ tiếng Việt 100% chuẩn dấu) -->
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display (100% tiếng Việt chuẩn dấu) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -40,6 +40,7 @@
             brandGreen: '#186049',       /* Primary Green */
             forestDeep: '#0f4030',
             accentGreen: '#4A943E',      /* Fresh Accent Green */
+            freshEmerald: '#4ADE80',
             earthyOrange: '#D98327',     /* Earthy Orange / Terracotta CTA */
             earthyHover: '#b86d1f',
           },
@@ -56,70 +57,106 @@
   <!-- Google <model-viewer> CDN cho mô hình 3D & WebXR/AR -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
-  <!-- CSS Variables & Toàn diện Responsive Fit & Dark Mode -->
+  <!-- CSS Variables & Glassmorphism Styling System -->
   <style>
-    /* 1. CSS VARIABLES (HỆ THỐNG THEME SÁNG & TỐI) */
+    /* ========================================================================= */
+    /* 1. CSS VARIABLES (HỆ THỐNG GLASSMORPHISM SÁNG & TỐI)                      */
+    /* ========================================================================= */
     :root {
-      /* Bảng màu chuẩn yêu cầu */
+      /* Brand Identity Colors */
       --primary-green: #186049;
       --accent-green: #4A943E;
+      --fresh-emerald: #4ADE80;
       --earthy-orange: #D98327;
       --earthy-hover: #b86d1f;
 
-      /* Chế độ Sáng (Default Light Theme) */
-      --bg-page: #FDFBF7;
-      --bg-surface: #FFFFFF;
-      --bg-surface-alt: #F7F5EE;
-      --bg-header: #186049;
-      --text-main: #1F2937;
-      --text-muted: #4B5563;
-      --text-inverse: #FFFFFF;
-      --border-subtle: rgba(0, 0, 0, 0.08);
-      --border-card: #E5E7EB;
-      --card-shadow: 0 4px 20px -2px rgba(24, 96, 73, 0.08);
-      --model-bg: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #F5F1E9 100%);
+      /* Glassmorphism Light Mode */
+      --page-overlay: radial-gradient(circle at 50% 15%, rgba(24, 96, 73, 0.45) 0%, rgba(10, 36, 27, 0.82) 100%);
+      --glass-nav-bg: rgba(24, 96, 73, 0.65);
+      --glass-nav-border: rgba(255, 255, 255, 0.28);
+      
+      --glass-panel-bg: rgba(255, 255, 255, 0.12);
+      --glass-panel-border: rgba(255, 255, 255, 0.26);
+      --glass-panel-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+      --glass-card-bg: rgba(255, 255, 255, 0.14);
+      --glass-card-border: rgba(255, 255, 255, 0.24);
+      --glass-card-hover: rgba(255, 255, 255, 0.24);
+      --glass-card-shadow: 0 12px 36px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+
+      --glass-input-bg: rgba(255, 255, 255, 0.16);
+      --glass-input-border: rgba(255, 255, 255, 0.32);
+
+      --text-hero-main: #FFFFFF;
+      --text-card-title: #FFFFFF;
+      --text-body: #E5E7EB;
+      --text-muted: #D1D5DB;
+
+      --model-bg: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(15, 64, 48, 0.45) 100%);
     }
 
-    /* Chế độ Tối (Dark Theme) */
+    /* Glassmorphism Dark Mode (Deep Bio-Cyber Glass) */
     body.dark-theme {
-      --bg-page: #121214;
-      --bg-surface: #1A1A1E;
-      --bg-surface-alt: #222228;
-      --bg-header: #0E3528;
-      --text-main: #F3F4F6;
+      --page-overlay: radial-gradient(circle at 50% 15%, rgba(7, 24, 18, 0.75) 0%, rgba(3, 10, 8, 0.96) 100%);
+      --glass-nav-bg: rgba(8, 28, 21, 0.85);
+      --glass-nav-border: rgba(255, 255, 255, 0.15);
+
+      --glass-panel-bg: rgba(12, 28, 22, 0.65);
+      --glass-panel-border: rgba(255, 255, 255, 0.15);
+      --glass-panel-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+      --glass-card-bg: rgba(14, 34, 26, 0.55);
+      --glass-card-border: rgba(255, 255, 255, 0.14);
+      --glass-card-hover: rgba(20, 48, 37, 0.75);
+      --glass-card-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
+      --glass-input-bg: rgba(10, 24, 18, 0.75);
+      --glass-input-border: rgba(255, 255, 255, 0.18);
+
+      --text-hero-main: #FFFFFF;
+      --text-card-title: #FFFFFF;
+      --text-body: #D1D5DB;
       --text-muted: #9CA3AF;
-      --text-inverse: #FFFFFF;
-      --border-subtle: rgba(255, 255, 255, 0.12);
-      --border-card: #2D2D35;
-      --card-shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.6);
-      --model-bg: radial-gradient(circle at 50% 50%, #202026 0%, #141418 100%);
+
+      --model-bg: radial-gradient(circle at 50% 50%, rgba(20, 50, 38, 0.6) 0%, rgba(5, 15, 12, 0.9) 100%);
     }
 
-    /* 2. CHỐNG VỠ CHỮ & CHỐNG TRÀN TOÀN TRANG (RESPONSIVE FIT) */
+    /* ========================================================================= */
+    /* 2. BACKGROUND & GLOBAL RESPONSIVE FIT                                     */
+    /* ========================================================================= */
     *, *::before, *::after {
       box-sizing: border-box;
       max-width: 100%;
     }
 
-    html, body {
+    html {
       overflow-x: hidden;
       width: 100%;
-      min-height: 100%;
-      background-color: var(--bg-page);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* Tự động ngắt dòng chữ, không che khuất, không vỡ layout */
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      min-height: 100vh;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--text-body);
+      /* Immersive Tropical Botanical Wallpaper */
+      background-image: var(--page-overlay), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=2400&q=85');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      transition: background 0.35s ease, color 0.25s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Chống vỡ chữ và tràn trang */
     p, h1, h2, h3, h4, h5, h6, span, a, li, label, div {
       overflow-wrap: break-word;
       word-wrap: break-word;
       word-break: break-word;
-      hyphens: auto;
     }
 
-    /* Đảm bảo toàn bộ media đều fit 100% không tạo scroll ngang */
     img, svg, video, canvas {
       max-width: 100%;
       height: auto;
@@ -127,74 +164,160 @@
       display: block;
     }
 
-    /* 3. ĐỊNH DẠNG GOOGLE MODEL-VIEWER */
+    /* ========================================================================= */
+    /* 3. GLASSMORPHISM CORE UTILITY CLASSES                                     */
+    /* ========================================================================= */
+    .glass-nav {
+      background: var(--glass-nav-bg);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid var(--glass-nav-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .glass-panel {
+      background: var(--glass-panel-bg);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid var(--glass-panel-border);
+      box-shadow: var(--glass-panel-shadow);
+      border-radius: 28px;
+    }
+
+    .glass-card {
+      background: var(--glass-card-bg);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border: 1px solid var(--glass-card-border);
+      box-shadow: var(--glass-card-shadow);
+      border-radius: 22px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      background: var(--glass-card-hover);
+      border-color: rgba(74, 222, 128, 0.55);
+      box-shadow: 0 20px 45px rgba(24, 96, 73, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .glass-input {
+      background: var(--glass-input-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-input-border);
+      color: #FFFFFF;
+      transition: all 0.2s ease;
+    }
+
+    .glass-input:focus {
+      outline: none;
+      border-color: #4ADE80;
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      transition: all 0.2s ease;
+    }
+    .glass-pill:hover, .glass-pill.active {
+      background: #186049;
+      border-color: #4ADE80;
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.35);
+    }
+
+    /* Ambient Glow Blobs */
+    .glow-sphere-green {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.22) 0%, rgba(24, 96, 73, 0) 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-sphere-orange {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 131, 39, 0.22) 0%, rgba(217, 131, 39, 0) 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ========================================================================= */
+    /* 4. GOOGLE MODEL-VIEWER STYLING                                           */
+    /* ========================================================================= */
     model-viewer {
       width: 100%;
       max-width: 100%;
-      height: 380px;
+      height: 390px;
       background: var(--model-bg);
-      border-radius: 1rem;
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
       outline: none;
+      border: 1px solid var(--glass-panel-border);
       --poster-color: transparent;
       box-sizing: border-box;
     }
 
     @media (min-width: 768px) {
       model-viewer {
-        height: 460px;
+        height: 480px;
       }
     }
 
     /* Hotspot Annotation Styles */
     .hotspot {
       display: block;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      border: 3px solid #FFFFFF;
+      border: 2.5px solid #FFFFFF;
       background-color: var(--earthy-orange);
-      box-shadow: 0 0 10px rgba(217, 131, 39, 0.8);
+      box-shadow: 0 0 14px rgba(217, 131, 39, 0.9);
       cursor: pointer;
       position: relative;
       transition: transform 0.2s ease;
     }
     .hotspot:hover {
-      transform: scale(1.2);
+      transform: scale(1.25);
     }
     .hotspot-annotation {
       position: absolute;
-      left: calc(100% + 10px);
+      left: calc(100% + 12px);
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(24, 96, 73, 0.95);
+      background: rgba(15, 64, 48, 0.92);
       color: #FFFFFF;
-      padding: 5px 10px;
-      border-radius: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
       font-size: 11px;
+      font-weight: 600;
       white-space: nowrap;
       pointer-events: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
     }
 
-    /* 4. UTILITY THEME CLASSES */
-    .theme-bg-page { background-color: var(--bg-page); }
-    .theme-bg-surface { background-color: var(--bg-surface); }
-    .theme-bg-surface-alt { background-color: var(--bg-surface-alt); }
-    .theme-text-main { color: var(--text-main); }
-    .theme-text-muted { color: var(--text-muted); }
-    .theme-border { border-color: var(--border-card); }
-    .theme-shadow { box-shadow: var(--card-shadow); }
-
     /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 7px; height: 7px; }
-    ::-webkit-scrollbar-track { background: var(--bg-page); }
-    ::-webkit-scrollbar-thumb { background: var(--primary-green); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent-green); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: rgba(10, 30, 22, 0.7); }
+    ::-webkit-scrollbar-thumb { background: #186049; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); }
+    ::-webkit-scrollbar-thumb:hover { background: #4ADE80; }
 
-    /* Slide-out Mobile Menu Transitions */
+    /* Mobile Drawer Animations */
     #mobileDrawer {
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #mobileBackdrop {
       transition: opacity 0.3s ease;
@@ -202,13 +325,18 @@
   </style>
 </head>
 
-<body class="selection:bg-[#4A943E] selection:text-white">
+<body class="selection:bg-[#4ADE80] selection:text-[#0b281f]">
+
+  <!-- Ambient Glow Spheres for Glass Depth -->
+  <div class="glow-sphere-green -top-20 -left-20"></div>
+  <div class="glow-sphere-orange top-1/4 -right-20"></div>
+  <div class="glow-sphere-green top-2/3 -left-20"></div>
 
   <!-- ========================================================================= -->
   <!-- 1. HEADER (FLEXBOX CHUẨN: MOBILE GỒM 3 KHỐI TRÁI - GIỮA - PHẢI CÙNG HÀNG) -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-40 bg-[#186049] text-white shadow-md border-b border-emerald-900/50">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Flexbox Header Bar -->
       <div class="flex items-center justify-between h-16 sm:h-20 w-full gap-2">
@@ -218,7 +346,7 @@
           <button 
             id="hamburgerBtn" 
             aria-label="Mở menu điều hướng"
-            class="p-2 -ml-1 rounded-lg text-emerald-100 hover:text-white hover:bg-emerald-800/70 focus:outline-none focus:ring-2 focus:ring-emerald-300 transition-colors"
+            class="p-2 -ml-1 rounded-xl text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#4ADE80] transition-all"
           >
             <!-- 3 Horizontal Bars Icon -->
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,52 +358,52 @@
         <!-- ================= KHỐI GIỮA (MOBILE) / KHỐI TRÁI (DESKTOP): LOGO & TÊN THƯƠNG HIỆU ================= -->
         <div class="flex-1 lg:flex-initial flex justify-center lg:justify-start">
           <a href="#hero" class="flex items-center gap-2.5 group focus:outline-none">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#4A943E] flex items-center justify-center text-white shadow-inner group-hover:scale-105 transition-transform shrink-0">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#4ADE80] to-[#186049] flex items-center justify-center text-white shadow-lg border border-white/30 group-hover:scale-105 transition-transform shrink-0">
               <!-- Leaf Icon -->
-              <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 fill-current filter drop-shadow" viewBox="0 0 24 24">
                 <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 8 20c7 0 13-7 13-16 0-.6-.4-1-1-1-.3 0-.6.1-.8.3L17 8m-4.5 5.5c-1.5.5-3 1.5-4.5 3 1.5-2 2.5-3.5 3-4.5l1.5 1.5Z"/>
               </svg>
             </div>
             <div class="flex flex-col text-left">
-              <span class="text-lg sm:text-xl font-bold tracking-tight text-white font-serif whitespace-nowrap leading-tight">
-                EcoGreen <span class="text-[#4A943E] font-sans font-semibold">Flora</span>
+              <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-white font-serif whitespace-nowrap leading-tight drop-shadow-sm">
+                EcoGreen <span class="text-[#4ADE80] font-sans font-semibold">Flora</span>
               </span>
-              <span class="hidden sm:inline-block text-[10px] tracking-wider text-emerald-200/80 uppercase font-medium">
-                Biophilic Living Space
+              <span class="hidden sm:inline-block text-[10px] tracking-widest text-emerald-200/90 uppercase font-medium">
+                Modern Glassmorphism & WebXR
               </span>
             </div>
           </a>
         </div>
 
         <!-- ================= DESKTOP NAVIGATION LINKS ================= -->
-        <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
-          <a href="#hero" class="text-emerald-100 hover:text-white transition-colors py-1">Trang chủ</a>
-          <a href="#collection" class="text-emerald-100 hover:text-white transition-colors py-1">Bộ sưu tập</a>
-          <a href="#ar-experience" class="text-emerald-100 hover:text-white transition-colors py-1 flex items-center gap-1.5">
+        <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium">
+          <a href="#hero" class="text-white/80 hover:text-white transition-colors py-1 hover:drop-shadow">Trang chủ</a>
+          <a href="#collection" class="text-white/80 hover:text-white transition-colors py-1 hover:drop-shadow">Bộ sưu tập</a>
+          <a href="#ar-experience" class="text-white/80 hover:text-white transition-colors py-1 flex items-center gap-1.5 hover:drop-shadow">
             <span>Xem 3D/AR</span>
-            <span class="bg-[#4A943E] text-white text-[10px] font-bold px-1.5 py-0.5 rounded tracking-wide">360°</span>
+            <span class="bg-[#4ADE80] text-[#0f4030] text-[10px] font-extrabold px-1.5 py-0.5 rounded-full tracking-wide shadow-sm">360°</span>
           </a>
-          <a href="#values" class="text-emerald-100 hover:text-white transition-colors py-1">Giá trị cốt lõi</a>
-          <a href="#feng-shui-consult" class="text-emerald-100 hover:text-white transition-colors py-1">Tư vấn Phong thủy</a>
-          <a href="#testimonials" class="text-emerald-100 hover:text-white transition-colors py-1">Đánh giá</a>
+          <a href="#values" class="text-white/80 hover:text-white transition-colors py-1 hover:drop-shadow">Giá trị</a>
+          <a href="#feng-shui-consult" class="text-white/80 hover:text-white transition-colors py-1 hover:drop-shadow">Phong thủy</a>
+          <a href="#testimonials" class="text-white/80 hover:text-white transition-colors py-1 hover:drop-shadow">Đánh giá</a>
         </nav>
 
         <!-- ================= KHỐI PHẢI (CÙNG HÀNG VỚI LOGO): NÚT DARK MODE TOGGLE & CTA ================= -->
         <div class="flex items-center gap-2 sm:gap-3">
           
-          <!-- Nút Toggle Dark Mode (Hoạt động trên cả Mobile & Desktop) -->
+          <!-- Nút Toggle Dark Mode -->
           <button 
             id="themeToggleBtn" 
             aria-label="Chuyển đổi giao diện Sáng / Tối"
             title="Chuyển đổi chế độ Tối / Sáng"
-            class="theme-toggle-btn p-2 rounded-xl text-emerald-100 hover:text-white bg-emerald-800/50 hover:bg-emerald-800 border border-emerald-700/60 transition-all flex items-center justify-center shrink-0"
+            class="p-2 sm:p-2.5 rounded-xl text-white bg-white/10 hover:bg-white/20 border border-white/25 shadow-sm active:scale-95 transition-all flex items-center justify-center shrink-0"
           >
             <!-- Moon Icon (Hiển thị khi ở Light Mode) -->
-            <svg id="moonIcon" class="w-5 h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg id="moonIcon" class="w-5 h-5 block text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
             </svg>
             <!-- Sun Icon (Hiển thị khi ở Dark Mode) -->
-            <svg id="sunIcon" class="w-5 h-5 hidden text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg id="sunIcon" class="w-5 h-5 hidden text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
             </svg>
           </button>
@@ -283,7 +411,7 @@
           <!-- Desktop CTA Button -->
           <a 
             href="#order-form" 
-            class="hidden sm:inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-[#D98327] hover:bg-[#b86d1f] shadow-md active:scale-95 transition-all whitespace-nowrap shrink-0"
+            class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] hover:to-[#D98327] shadow-lg shadow-orange-900/30 border border-white/30 active:scale-95 transition-all whitespace-nowrap shrink-0"
           >
             <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -299,73 +427,71 @@
 
 
   <!-- ========================================================================= -->
-  <!-- MOBILE SLIDE-OUT DRAWER (TRƯỢT MƯỢT TỪ MÉP TRÁI SANG KHI BẤM HAMBURGER)     -->
+  <!-- MOBILE SLIDE-OUT DRAWER (KÍNH MỜ GLASSMORPHISM TRƯỢT TỪ MÉP TRÁI)         -->
   <!-- ========================================================================= -->
-  <!-- Nền đen mờ khi mở menu -->
-  <div id="mobileBackdrop" class="fixed inset-0 bg-black/60 z-50 pointer-events-none opacity-0 lg:hidden"></div>
+  <div id="mobileBackdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 pointer-events-none opacity-0 lg:hidden"></div>
 
-  <!-- Drawer trượt từ cạnh trái -->
   <aside 
     id="mobileDrawer" 
-    class="fixed inset-y-0 left-0 w-72 max-w-[80vw] bg-[#0E3528] text-white z-50 transform -translate-x-full shadow-2xl flex flex-col justify-between p-5 border-r border-emerald-800 lg:hidden"
+    class="fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-[#0d2a20]/90 backdrop-blur-2xl text-white z-50 transform -translate-x-full shadow-2xl flex flex-col justify-between p-6 border-r border-white/20 lg:hidden"
     aria-label="Mobile Navigation"
   >
     <div>
       <!-- Drawer Header -->
-      <div class="flex items-center justify-between pb-4 border-b border-emerald-800/80">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-[#4A943E] flex items-center justify-center text-white">
+      <div class="flex items-center justify-between pb-5 border-b border-white/15">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#4ADE80] to-[#186049] flex items-center justify-center text-white border border-white/30">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
               <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 8 20c7 0 13-7 13-16 0-.6-.4-1-1-1-.3 0-.6.1-.8.3L17 8m-4.5 5.5c-1.5.5-3 1.5-4.5 3 1.5-2 2.5-3.5 3-4.5l1.5 1.5Z"/>
             </svg>
           </div>
-          <span class="font-serif font-bold text-base">EcoGreen Flora</span>
+          <span class="font-serif font-bold text-lg">EcoGreen Flora</span>
         </div>
-        <button id="closeDrawerBtn" aria-label="Đóng menu" class="p-1.5 rounded-lg text-emerald-200 hover:text-white hover:bg-emerald-800/60">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="closeDrawerBtn" aria-label="Đóng menu" class="p-2 rounded-xl text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/15">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
 
-      <!-- Navigation Links -->
-      <nav class="mt-5 space-y-1 text-sm font-medium">
-        <a href="#hero" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg text-emerald-100 hover:bg-emerald-800/60 transition-colors">
+      <!-- Navigation Links (Glass styled) -->
+      <nav class="mt-6 space-y-2 text-sm font-medium">
+        <a href="#hero" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-white/90 bg-white/5 hover:bg-white/15 border border-white/10 transition-colors">
           <span>01. Trang chủ</span>
-          <span class="text-xs text-emerald-300">↗</span>
+          <span class="text-xs text-[#4ADE80]">↗</span>
         </a>
-        <a href="#collection" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg text-emerald-100 hover:bg-emerald-800/60 transition-colors">
+        <a href="#collection" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-white/90 bg-white/5 hover:bg-white/15 border border-white/10 transition-colors">
           <span>02. Bộ sưu tập cây</span>
-          <span class="text-xs text-emerald-300">↗</span>
+          <span class="text-xs text-[#4ADE80]">↗</span>
         </a>
-        <a href="#ar-experience" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg text-emerald-100 hover:bg-emerald-800/60 transition-colors">
+        <a href="#ar-experience" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-white/90 bg-white/5 hover:bg-white/15 border border-white/10 transition-colors">
           <span>03. Xem thực tế 3D/AR</span>
-          <span class="bg-[#4A943E] text-[10px] font-bold px-1.5 py-0.5 rounded text-white">360°</span>
+          <span class="bg-[#4ADE80] text-[#0f4030] text-[10px] font-extrabold px-2 py-0.5 rounded-full">360°</span>
         </a>
-        <a href="#values" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg text-emerald-100 hover:bg-emerald-800/60 transition-colors">
+        <a href="#values" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-white/90 bg-white/5 hover:bg-white/15 border border-white/10 transition-colors">
           <span>04. Giá trị cốt lõi</span>
-          <span class="text-xs text-emerald-300">↗</span>
+          <span class="text-xs text-[#4ADE80]">↗</span>
         </a>
-        <a href="#feng-shui-consult" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg text-emerald-100 hover:bg-emerald-800/60 transition-colors">
+        <a href="#feng-shui-consult" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-white/90 bg-white/5 hover:bg-white/15 border border-white/10 transition-colors">
           <span>05. Tư vấn Phong thủy</span>
-          <span class="text-xs text-emerald-300">↗</span>
+          <span class="text-xs text-[#4ADE80]">↗</span>
         </a>
-        <a href="#testimonials" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-lg text-emerald-100 hover:bg-emerald-800/60 transition-colors">
+        <a href="#testimonials" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-white/90 bg-white/5 hover:bg-white/15 border border-white/10 transition-colors">
           <span>06. Đánh giá khách hàng</span>
-          <span class="text-xs text-amber-300">5.0★</span>
+          <span class="text-xs text-amber-300 font-bold">5.0★</span>
         </a>
       </nav>
     </div>
 
     <!-- Drawer Footer Actions -->
-    <div class="pt-4 border-t border-emerald-800/80 space-y-3">
+    <div class="pt-5 border-t border-white/15 space-y-3">
       <a 
         href="#order-form" 
-        class="mobile-nav-link flex items-center justify-center w-full py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#D98327] hover:bg-[#b86d1f] shadow-md transition-all text-center"
+        class="mobile-nav-link flex items-center justify-center w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] hover:to-[#D98327] shadow-lg border border-white/20 text-center"
       >
         Chọn Cây & Đặt Hàng Ngay
       </a>
-      <div class="text-[11px] text-emerald-300/80 text-center">
+      <div class="text-[12px] text-emerald-200/80 text-center">
         Hotline hỗ trợ: <strong class="text-white font-mono">1900 6868</strong>
       </div>
     </div>
@@ -373,780 +499,1133 @@
 
 
   <!-- ========================================================================= -->
-  <!-- 2. SECTION 1: HERO SECTION (OPTIMIZED PADDING & FLUID TYPOGRAPHY)         -->
+  <!-- 2. SECTION 1: HERO SECTION (GLASS CONTAINER THEO STYLE WEB_UXUI)           -->
   <!-- ========================================================================= -->
-  <section id="hero" class="relative overflow-hidden py-8 sm:py-12 lg:py-20 theme-bg-page">
-    <!-- Ambient organic gradient glow -->
-    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 sm:w-80 h-72 sm:h-80 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-14 space-y-12 sm:space-y-16">
+    
+    <!-- Hero Glass Master Card -->
+    <section id="hero" class="glass-panel p-6 sm:p-10 lg:p-14 relative overflow-hidden">
+      
+      <!-- Ambient light streak inside glass -->
+      <div class="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-emerald-400/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
         
         <!-- Left: Copy & Value Proposition -->
-        <div class="lg:col-span-7 space-y-4 sm:space-y-6 text-left">
+        <div class="lg:col-span-7 space-y-5 sm:space-y-7 text-left">
           
-          <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-[#186049] dark:text-[#4ade80]">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#4A943E] shrink-0"></span>
-            <span>Phủ Xanh Không Gian Sống · Mang Bình Yên Vào Nhà</span>
+          <!-- Category / Badge Pill -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-xs font-semibold tracking-wide uppercase text-white shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#4ADE80] animate-pulse"></span>
+            <span>Biophilic Living Space · Phủ Xanh Tự Nhiên</span>
           </div>
 
-          <!-- Headline với kích thước chữ linh hoạt (clamp fluid) -->
-          <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold font-serif leading-[1.25] tracking-tight">
-            Mang <span class="text-[#4A943E] underline decoration-[#D98327]/60 underline-offset-4">BÌNH YÊN</span> & <span class="text-[#D98327]">TÀI LỘC</span> Vào Không Gian Sống
+          <!-- Hero Headline -->
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-serif leading-[1.18] tracking-tight text-white drop-shadow-md">
+            Mang <span class="text-[#4ADE80] underline decoration-[#D98327]/80 decoration-wavy underline-offset-8">Bình Yên</span> & <span class="text-[#D98327]">Tài Lộc</span> Vào Không Gian Sống
           </h1>
 
-          <p class="text-sm sm:text-base md:text-lg theme-text-muted leading-relaxed">
-            Chuyên cung cấp cây cảnh lọc không khí, cây phong thủy để bàn với trải nghiệm xem mô hình <strong>3D/AR thực tế</strong> trước khi mua. Xua tan ngột ngạt công sở, cân bằng sinh khí và bảo vệ sức khỏe cả gia đình.
+          <p class="text-base sm:text-lg text-white/90 leading-relaxed font-normal drop-shadow-sm max-w-2xl">
+            Tận hưởng bộ sưu tập cây cảnh tuyển chọn lọc không khí và chuẩn phong thủy. Trải nghiệm xem mô hình <strong>3D / AR thực tế</strong> ướm thử vào góc phòng làm việc trước khi đặt mua.
           </p>
 
-          <!-- Action Buttons -->
+          <!-- Action Buttons (Glass & Terracotta CTA) -->
           <div class="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
             <a 
               href="#collection" 
-              class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm sm:text-base font-bold text-white bg-[#D98327] hover:bg-[#b86d1f] shadow-md transition-all text-center"
+              class="inline-flex items-center justify-center px-7 py-4 rounded-2xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] hover:to-[#D98327] shadow-xl shadow-orange-950/40 border border-white/30 active:scale-95 transition-all text-center"
             >
               <span>Khám phá bộ sưu tập</span>
-              <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <svg class="w-5 h-5 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
             </a>
 
             <a 
               href="#ar-experience" 
-              class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold border-2 border-[#186049] text-[#186049] dark:border-[#4ade80] dark:text-[#4ade80] hover:bg-emerald-500/10 transition-all text-center"
+              class="inline-flex items-center justify-center px-7 py-4 rounded-2xl text-sm sm:text-base font-semibold text-white bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md shadow-lg active:scale-95 transition-all text-center"
             >
-              <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-[#4A943E] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 mr-2 text-[#4ADE80] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l2-1v-2.5M18 18l-2-1v-2.5"/>
               </svg>
-              <span>Trải nghiệm 3D / AR</span>
+              <span>Ướm thử 3D / AR</span>
             </a>
           </div>
 
-          <!-- Trust Badges Strip (Responsive grid) -->
-          <div class="pt-4 sm:pt-6 border-t theme-border grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-            <div>
-              <span class="block text-lg sm:text-xl font-bold text-[#186049] dark:text-[#4ade80] font-mono">15.000+</span>
-              <span class="theme-text-muted">Cây trao gửi</span>
+          <!-- Trust Badges Strip (Glass Tile Matrix) -->
+          <div class="pt-6 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+              <span class="block text-xl sm:text-2xl font-bold text-[#4ADE80] font-mono">15.000+</span>
+              <span class="text-white/80">Cây trao gửi</span>
             </div>
-            <div>
-              <span class="block text-lg sm:text-xl font-bold text-[#186049] dark:text-[#4ade80] font-mono">99.4%</span>
-              <span class="theme-text-muted">Hài lòng</span>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+              <span class="block text-xl sm:text-2xl font-bold text-white font-mono">99.4%</span>
+              <span class="text-white/80">Hài lòng</span>
             </div>
-            <div>
-              <span class="block text-lg sm:text-xl font-bold text-[#D98327] font-mono">1 đổi 1</span>
-              <span class="theme-text-muted">Bảo hành 7 ngày</span>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+              <span class="block text-xl sm:text-2xl font-bold text-[#D98327] font-mono">1 đổi 1</span>
+              <span class="text-white/80">Bảo hành 30 ngày</span>
             </div>
-            <div>
-              <span class="block text-lg sm:text-xl font-bold text-[#4A943E] font-mono">100%</span>
-              <span class="theme-text-muted">Gốm nung mộc</span>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+              <span class="block text-xl sm:text-2xl font-bold text-[#4ADE80] font-mono">100%</span>
+              <span class="text-white/80">Gốm nung mộc</span>
             </div>
           </div>
 
         </div>
 
-        <!-- Right: Responsive Visual Showcase Card -->
-        <div class="lg:col-span-5 relative">
-          <div class="relative rounded-2xl overflow-hidden shadow-lg border theme-border theme-bg-surface">
+        <!-- Right: Glass Showcase Circle Window (Inspired by Web_UXUI_2 & Web_UXUI) -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-md aspect-square rounded-[36px] overflow-hidden p-3 bg-white/15 backdrop-blur-xl border border-white/35 shadow-2xl group">
+            
+            <!-- Interior Plant Image Frame -->
+            <div class="w-full h-full rounded-[28px] overflow-hidden relative">
+              <img 
+                src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=1000&q=85" 
+                alt="Không gian sống ngập tràn cây xanh EcoGreen Flora" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+
+              <!-- Floating Glass Badge on Image -->
+              <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-black/40 backdrop-blur-md border border-white/25 flex items-center justify-between text-white">
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-[#4ADE80] font-bold block">Bán chạy nhất</span>
+                  <span class="text-sm font-bold font-serif">Monstera Deliciosa (Trầu Bà Nam Mỹ)</span>
+                </div>
+                <a href="#ar-experience" class="w-8 h-8 rounded-full bg-[#D98327] flex items-center justify-center text-white shadow-md hover:scale-110 transition-transform">
+                  <span class="text-xs">360°</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 3. SECTION 2: GIÁ TRỊ CỐT LÕI (4 PILLARS IN FROSTED GLASS CARDS)          -->
+    <!-- ========================================================================= -->
+    <section id="values" class="space-y-6">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs uppercase tracking-widest text-[#4ADE80] font-bold px-3 py-1 rounded-full bg-white/10 border border-white/20 inline-block">Vì sao chọn EcoGreen</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white drop-shadow">Giá Trị Vượt Trội Cho Không Gian Của Bạn</h2>
+        <p class="text-sm sm:text-base text-white/80">Chúng tôi không chỉ bán cây cảnh, chúng tôi mang tới giải pháp kiến tạo sinh khí và cân bằng cuộc sống.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Value 1 -->
+        <div class="glass-card p-6 flex flex-col justify-between space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-[#4ADE80] shadow-inner">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">100% Cây Dưỡng Khỏe</h3>
+            <p class="text-xs sm:text-sm text-white/75 leading-relaxed">Cây được ươm dưỡng ổn định rễ 45 ngày trước khi xuất vườn, đảm bảo thích nghi tốt môi trường máy lạnh văn phòng.</p>
+          </div>
+          <div class="pt-2 border-t border-white/15 text-xs text-[#4ADE80] font-semibold flex items-center gap-1">
+            <span>Sinh trưởng bền bỉ</span> →
+          </div>
+        </div>
+
+        <!-- Value 2 -->
+        <div class="glass-card p-6 flex flex-col justify-between space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-[#D98327] shadow-inner">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">Bảo Hành 30 Ngày</h3>
+            <p class="text-xs sm:text-sm text-white/75 leading-relaxed">Đổi mới 1 - 1 miễn phí nếu cây bị héo úa, vàng lá do lỗi kỹ thuật vận chuyển hoặc cây yếu sinh trưởng.</p>
+          </div>
+          <div class="pt-2 border-t border-white/15 text-xs text-[#D98327] font-semibold flex items-center gap-1">
+            <span>An tâm tuyệt đối</span> →
+          </div>
+        </div>
+
+        <!-- Value 3 -->
+        <div class="glass-card p-6 flex flex-col justify-between space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-[#4ADE80] shadow-inner">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l2-1v-2.5M18 18l-2-1v-2.5"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">Ướm Thử 3D/AR Thực Tế</h3>
+            <p class="text-xs sm:text-sm text-white/75 leading-relaxed">Công nghệ WebXR tiên tiến, mở camera điện thoại chiếu cây lên bàn làm việc xem độ vừa vặn trước khi thanh toán.</p>
+          </div>
+          <div class="pt-2 border-t border-white/15 text-xs text-[#4ADE80] font-semibold flex items-center gap-1">
+            <span>Chuẩn từng centimet</span> →
+          </div>
+        </div>
+
+        <!-- Value 4 -->
+        <div class="glass-card p-6 flex flex-col justify-between space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-[#D98327] shadow-inner">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">Tư Vấn Phong Thủy</h3>
+            <p class="text-xs sm:text-sm text-white/75 leading-relaxed">Gợi ý chính xác loại cây tương sinh theo mệnh Kim - Mộc - Thủy - Hỏa - Thổ, mang lại may mắn và tài lộc dồi dào.</p>
+          </div>
+          <div class="pt-2 border-t border-white/15 text-xs text-[#D98327] font-semibold flex items-center gap-1">
+            <span>Chiêu tài kích lộc</span> →
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 4. SECTION 3: BỘ SƯU TẬP CÂY CẢNH (GLASS CARDS THEO MOODBOARD MOBILE/WEB) -->
+    <!-- ========================================================================= -->
+    <section id="collection" class="space-y-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-[#4ADE80] font-bold px-3 py-1 rounded-full bg-white/10 border border-white/20 inline-block">Sản Phẩm Nổi Bật</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white mt-2 drop-shadow">Bộ Sưu Tập Cây Cảnh Chọn Lọc</h2>
+          <p class="text-sm sm:text-base text-white/80 mt-1">Đầy đủ chậu gốm nung mộc, đĩa lót và hướng dẫn chăm sóc chi tiết.</p>
+        </div>
+
+        <!-- Filter Category Tabs (Glass Pills) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+          <button onclick="filterPlants('all')" data-category="all" class="category-btn glass-pill active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap">
+            Tất cả
+          </button>
+          <button onclick="filterPlants('office')" data-category="office" class="category-btn glass-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap">
+            Cây Văn Phòng
+          </button>
+          <button onclick="filterPlants('fengshui')" data-category="fengshui" class="category-btn glass-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap">
+            Phong Thủy
+          </button>
+          <button onclick="filterPlants('air')" data-category="air" class="category-btn glass-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap">
+            Lọc Khí
+          </button>
+          <button onclick="filterPlants('desk')" data-category="desk" class="category-btn glass-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap">
+            Để Bàn
+          </button>
+        </div>
+      </div>
+
+      <!-- Plant Cards Grid -->
+      <div id="plantGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Card 1: Cây Kim Tiền -->
+        <div class="plant-card glass-card overflow-hidden flex flex-col justify-between" data-cat="office fengshui desk">
+          <div class="relative aspect-[4/3] overflow-hidden p-3">
             <img 
-              src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=1000&q=80" 
-              alt="Không gian sống ngập tràn cây cảnh EcoGreen Flora"
-              class="w-full h-64 sm:h-80 lg:h-96 object-cover"
+              src="/images/plant-kim-tien.jpg" 
+              onerror="this.src='https://images.unsplash.com/photo-1632490899896-1358294a5692?auto=format&fit=crop&w=800&q=80'"
+              alt="Cây Kim Tiền Zamioculcas" 
+              class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-            
-            <div class="absolute bottom-3 left-3 right-3 bg-white/95 dark:bg-[#1A1A1E]/95 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow border theme-border flex items-center justify-between">
-              <div>
-                <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-[#4A943E] uppercase block">Trực Quan Hóa WebXR</span>
-                <span class="text-xs sm:text-sm font-bold theme-text-main">Ướm cây vào góc phòng trước khi chốt đơn</span>
+            <div class="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#186049]/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold">
+              Phong Thủy May Mắn
+            </div>
+            <div class="absolute bottom-5 right-5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold flex items-center gap-1 border border-white/10">
+              ★ 4.9 (128)
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 space-y-4">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-[#4ADE80] font-mono tracking-wider">Zamioculcas Zamiifolia</span>
+                <span class="text-xs text-white/70">Cao: 35-45cm</span>
               </div>
-              <span class="px-2 py-1 text-[10px] sm:text-xs font-bold text-white bg-[#D98327] rounded-md shrink-0 ml-2">
-                Chuẩn 1:1
-              </span>
+              <h3 class="text-xl font-bold font-serif text-white mt-1">Cây Kim Tiền (Phát Tài)</h3>
+              <p class="text-xs sm:text-sm text-white/75 mt-1 line-clamp-2">Lá xanh mướt dầy bóng mọc hướng lên đón vượng khí. Dễ chăm sóc, sống tốt trong phòng máy lạnh thiếu sáng.</p>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-white/80 py-2 border-y border-white/15">
+              <div>Tưới nước: <strong class="text-white">1 lần/tuần</strong></div>
+              <div>Ánh sáng: <strong class="text-white">Bóng râm/Vừa</strong></div>
+              <div>Hợp mệnh: <strong class="text-[#4ADE80]">Kim, Thủy, Hỏa</strong></div>
+              <div>Vị trí: <strong class="text-white">Bàn làm việc</strong></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <span class="text-xs text-white/60 line-through">350.000đ</span>
+                <div class="text-xl sm:text-2xl font-bold text-[#D98327] font-mono">285.000đ</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="previewIn3D('Cây Kim Tiền')" title="Xem mô hình 3D" class="p-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white transition-colors">
+                  <span class="text-xs font-bold">360°</span>
+                </button>
+                <button onclick="selectPlantToOrder('Cây Kim Tiền (Phát Tài)', '285.000đ')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+                  Chọn Cây
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Cây Lưỡi Hổ -->
+        <div class="plant-card glass-card overflow-hidden flex flex-col justify-between" data-cat="office air desk">
+          <div class="relative aspect-[4/3] overflow-hidden p-3">
+            <img 
+              src="/images/plant-luoi-ho.jpg" 
+              onerror="this.src='https://images.unsplash.com/photo-1593482892290-f54927ae1bf6?auto=format&fit=crop&w=800&q=80'"
+              alt="Cây Lưỡi Hổ Sansevieria" 
+              class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#186049]/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold">
+              Top 1 Lọc Không Khí
+            </div>
+            <div class="absolute bottom-5 right-5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold flex items-center gap-1 border border-white/10">
+              ★ 5.0 (215)
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 space-y-4">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-[#4ADE80] font-mono tracking-wider">Sansevieria Trifasciata</span>
+                <span class="text-xs text-white/70">Cao: 30-40cm</span>
+              </div>
+              <h3 class="text-xl font-bold font-serif text-white mt-1">Cây Lưỡi Hổ Thái Viền Vàng</h3>
+              <p class="text-xs sm:text-sm text-white/75 mt-1 line-clamp-2">Nhả oxy tinh khiết vào ban đêm, hấp thụ độc tố Formaldehyde và bức xạ điện từ máy tính cực kỳ hiệu quả.</p>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-white/80 py-2 border-y border-white/15">
+              <div>Tưới nước: <strong class="text-white">10 ngày/lần</strong></div>
+              <div>Ánh sáng: <strong class="text-white">Mọi cấp độ sáng</strong></div>
+              <div>Hợp mệnh: <strong class="text-[#4ADE80]">Kim, Thổ</strong></div>
+              <div>Vị trí: <strong class="text-white">Bàn máy tính</strong></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <span class="text-xs text-white/60 line-through">260.000đ</span>
+                <div class="text-xl sm:text-2xl font-bold text-[#D98327] font-mono">195.000đ</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="previewIn3D('Cây Lưỡi Hổ')" title="Xem mô hình 3D" class="p-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white transition-colors">
+                  <span class="text-xs font-bold">360°</span>
+                </button>
+                <button onclick="selectPlantToOrder('Cây Lưỡi Hổ Thái Viền Vàng', '195.000đ')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+                  Chọn Cây
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Cây Bàng Singapore -->
+        <div class="plant-card glass-card overflow-hidden flex flex-col justify-between" data-cat="office air">
+          <div class="relative aspect-[4/3] overflow-hidden p-3">
+            <img 
+              src="/images/plant-bang-singapore.jpg" 
+              onerror="this.src='https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=800&q=80'"
+              alt="Cây Bàng Singapore Ficus Lyrata" 
+              class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#186049]/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold">
+              Sang Trọng Nội Thất
+            </div>
+            <div class="absolute bottom-5 right-5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold flex items-center gap-1 border border-white/10">
+              ★ 4.8 (89)
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 space-y-4">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-[#4ADE80] font-mono tracking-wider">Ficus Lyrata</span>
+                <span class="text-xs text-white/70">Cao: 55-70cm</span>
+              </div>
+              <h3 class="text-xl font-bold font-serif text-white mt-1">Cây Bàng Singapore Mini</h3>
+              <p class="text-xs sm:text-sm text-white/75 mt-1 line-clamp-2">Lá to bản xanh bóng dáng vĩ cầm kiêu hãnh. Tượng trưng cho sự chính trực, phát triển vững vàng và tài lộc.</p>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-white/80 py-2 border-y border-white/15">
+              <div>Tưới nước: <strong class="text-white">2 lần/tuần</strong></div>
+              <div>Ánh sáng: <strong class="text-white">Sáng tán xạ</strong></div>
+              <div>Hợp mệnh: <strong class="text-[#4ADE80]">Mộc, Hỏa</strong></div>
+              <div>Vị trí: <strong class="text-white">Góc phòng/Kệ sách</strong></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <span class="text-xs text-white/60 line-through">420.000đ</span>
+                <div class="text-xl sm:text-2xl font-bold text-[#D98327] font-mono">340.000đ</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="previewIn3D('Cây Bàng Singapore')" title="Xem mô hình 3D" class="p-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white transition-colors">
+                  <span class="text-xs font-bold">360°</span>
+                </button>
+                <button onclick="selectPlantToOrder('Cây Bàng Singapore Mini', '340.000đ')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+                  Chọn Cây
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Cây Trầu Bà Đế Vương -->
+        <div class="plant-card glass-card overflow-hidden flex flex-col justify-between" data-cat="fengshui office desk">
+          <div class="relative aspect-[4/3] overflow-hidden p-3">
+            <img 
+              src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=800&q=80" 
+              alt="Cây Trầu Bà Đế Vương Đỏ" 
+              class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#186049]/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold">
+              Quyền Lực & Vận May
+            </div>
+            <div class="absolute bottom-5 right-5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold flex items-center gap-1 border border-white/10">
+              ★ 4.9 (104)
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 space-y-4">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-[#4ADE80] font-mono tracking-wider">Philodendron Imperial</span>
+                <span class="text-xs text-white/70">Cao: 25-35cm</span>
+              </div>
+              <h3 class="text-xl font-bold font-serif text-white mt-1">Trầu Bà Đế Vương Đỏ</h3>
+              <p class="text-xs sm:text-sm text-white/75 mt-1 line-clamp-2">Sắc lá đỏ tía sang trọng thể hiện uy quyền lãnh đạo, trừ tà khí và khơi thông con đường thăng tiến sự nghiệp.</p>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-white/80 py-2 border-y border-white/15">
+              <div>Tưới nước: <strong class="text-white">1-2 lần/tuần</strong></div>
+              <div>Ánh sáng: <strong class="text-white">Bóng râm/Đèn điện</strong></div>
+              <div>Hợp mệnh: <strong class="text-[#4ADE80]">Hỏa, Thổ</strong></div>
+              <div>Vị trí: <strong class="text-white">Bàn sếp/Quầy lễ tân</strong></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <span class="text-xs text-white/60 line-through">320.000đ</span>
+                <div class="text-xl sm:text-2xl font-bold text-[#D98327] font-mono">250.000đ</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="previewIn3D('Trầu Bà Đế Vương')" title="Xem mô hình 3D" class="p-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white transition-colors">
+                  <span class="text-xs font-bold">360°</span>
+                </button>
+                <button onclick="selectPlantToOrder('Trầu Bà Đế Vương Đỏ', '250.000đ')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+                  Chọn Cây
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Cây Kim Ngân -->
+        <div class="plant-card glass-card overflow-hidden flex flex-col justify-between" data-cat="fengshui desk office">
+          <div class="relative aspect-[4/3] overflow-hidden p-3">
+            <img 
+              src="https://images.unsplash.com/photo-1598880940371-c756e015fea1?auto=format&fit=crop&w=800&q=80" 
+              alt="Cây Kim Ngân 3 Thân Xoắn" 
+              class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#186049]/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold">
+              Chiêu Tài Hút Lộc
+            </div>
+            <div class="absolute bottom-5 right-5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold flex items-center gap-1 border border-white/10">
+              ★ 5.0 (176)
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 space-y-4">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-[#4ADE80] font-mono tracking-wider">Pachira Aquatica</span>
+                <span class="text-xs text-white/70">Cao: 30-40cm</span>
+              </div>
+              <h3 class="text-xl font-bold font-serif text-white mt-1">Cây Kim Ngân Thân Bính</h3>
+              <p class="text-xs sm:text-sm text-white/75 mt-1 line-clamp-2">5 thùy lá đại diện cho ngũ hành Kim - Mộc - Thủy - Hỏa - Thổ hài hòa, giữ gìn tài sản và mang lại bình an gia đạo.</p>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-white/80 py-2 border-y border-white/15">
+              <div>Tưới nước: <strong class="text-white">1 lần/tuần</strong></div>
+              <div>Ánh sáng: <strong class="text-white">Ánh sáng dịu</strong></div>
+              <div>Hợp mệnh: <strong class="text-[#4ADE80]">Tất cả các mệnh</strong></div>
+              <div>Vị trí: <strong class="text-white">Bàn thu ngân/Làm việc</strong></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <span class="text-xs text-white/60 line-through">290.000đ</span>
+                <div class="text-xl sm:text-2xl font-bold text-[#D98327] font-mono">220.000đ</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="previewIn3D('Cây Kim Ngân')" title="Xem mô hình 3D" class="p-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white transition-colors">
+                  <span class="text-xs font-bold">360°</span>
+                </button>
+                <button onclick="selectPlantToOrder('Cây Kim Ngân Thân Bính', '220.000đ')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+                  Chọn Cây
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Cây Lan Ý -->
+        <div class="plant-card glass-card overflow-hidden flex flex-col justify-between" data-cat="air desk office">
+          <div class="relative aspect-[4/3] overflow-hidden p-3">
+            <img 
+              src="https://images.unsplash.com/photo-1593691509543-c55fb32e7355?auto=format&fit=crop&w=800&q=80" 
+              alt="Cây Lan Ý Peace Lily" 
+              class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#186049]/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold">
+              Hút Bức Xạ & Tỏa Hoa
+            </div>
+            <div class="absolute bottom-5 right-5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold flex items-center gap-1 border border-white/10">
+              ★ 4.9 (142)
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 space-y-4">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-[#4ADE80] font-mono tracking-wider">Spathiphyllum Wallisii</span>
+                <span class="text-xs text-white/70">Cao: 35-45cm</span>
+              </div>
+              <h3 class="text-xl font-bold font-serif text-white mt-1">Cây Lan Ý (Huệ Hòa Bình)</h3>
+              <p class="text-xs sm:text-sm text-white/75 mt-1 line-clamp-2">Hoa buồm trắng thanh tao, lọc sóng từ tính phát ra từ wifi và điện thoại. Biểu tượng của sự thanh khiết và hòa khí gia đình.</p>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-white/80 py-2 border-y border-white/15">
+              <div>Tưới nước: <strong class="text-white">2 lần/tuần</strong></div>
+              <div>Ánh sáng: <strong class="text-white">Chịu râm cực tốt</strong></div>
+              <div>Hợp mệnh: <strong class="text-[#4ADE80]">Kim, Thủy</strong></div>
+              <div>Vị trí: <strong class="text-white">Cạnh máy tính/Bàn trà</strong></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <span class="text-xs text-white/60 line-through">280.000đ</span>
+                <div class="text-xl sm:text-2xl font-bold text-[#D98327] font-mono">210.000đ</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="previewIn3D('Cây Lan Ý')" title="Xem mô hình 3D" class="p-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white transition-colors">
+                  <span class="text-xs font-bold">360°</span>
+                </button>
+                <button onclick="selectPlantToOrder('Cây Lan Ý (Huệ Hòa Bình)', '210.000đ')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+                  Chọn Cây
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
 
-  <!-- ========================================================================= -->
-  <!-- 3. SECTION 2: BỘ SƯU TẬP & GIÁ TRỊ CỐT LÕI (RESPONSIVE CARD GRID)           -->
-  <!-- ========================================================================= -->
-  <section id="collection" class="py-10 sm:py-16 theme-bg-surface border-t border-b theme-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ========================================================================= -->
+    <!-- 5. SECTION 4: 3D / AR INTERACTIVE TERMINAL (THEO MOODBOARD THEME_COLOR)    -->
+    <!-- ========================================================================= -->
+    <section id="ar-experience" class="glass-panel p-6 sm:p-10 lg:p-12 relative overflow-hidden space-y-8">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#4A943E] block mb-1">Bộ Sưu Tập Tuyển Chọn</span>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-serif">
-          Cây Cảnh Đa Dạng Cho Mọi Không Gian
-        </h2>
-        <p class="mt-2 text-xs sm:text-sm theme-text-muted">
-          Từng chậu cây được thuần dưỡng khỏe mạnh, giá thể đất giàu dinh dưỡng và chậu gốm mộc nung chuẩn thoát khí.
-        </p>
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-white/20 pb-6">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#4ADE80]">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#4ADE80] animate-ping"></span>
+            <span>WebXR Augmented Reality Interactive</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white drop-shadow">Trải Nghiệm 3D / AR Thực Tế Ảo</h2>
+          <p class="text-sm sm:text-base text-white/80">Xoay 360°, phóng to chi tiết lá và bật camera điện thoại ướm thử cây vào không gian của bạn.</p>
+        </div>
+
+        <!-- 3D Controls -->
+        <div class="flex items-center gap-3 flex-wrap">
+          <button 
+            id="toggleSpinBtn" 
+            onclick="toggleModelSpin()" 
+            class="px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs sm:text-sm font-semibold backdrop-blur-md transition-all flex items-center gap-2"
+          >
+            <svg class="w-4 h-4 text-[#4ADE80]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span id="spinBtnText">Dừng xoay</span>
+          </button>
+
+          <button 
+            onclick="resetModelView()" 
+            class="px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs sm:text-sm font-semibold backdrop-blur-md transition-all flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+            </svg>
+            <span>Đặt lại góc</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Category Filter Tabs (Scrollable on small mobile) -->
-      <div class="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar">
-        <button onclick="filterPlants('all')" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all bg-[#186049] text-white shrink-0" data-category="all">
-          Tất cả cây
-        </button>
-        <button onclick="filterPlants('air-purifying')" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all theme-bg-surface-alt theme-text-main hover:opacity-80 shrink-0" data-category="air-purifying">
-          Lọc Không Khí
-        </button>
-        <button onclick="filterPlants('feng-shui')" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all theme-bg-surface-alt theme-text-main hover:opacity-80 shrink-0" data-category="feng-shui">
-          Phong Thủy May Mắn
-        </button>
-        <button onclick="filterPlants('office-desk')" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all theme-bg-surface-alt theme-text-main hover:opacity-80 shrink-0" data-category="office-desk">
-          Để Bàn Văn Phòng
-        </button>
-        <button onclick="filterPlants('garden-balcony')" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all theme-bg-surface-alt theme-text-main hover:opacity-80 shrink-0" data-category="garden-balcony">
-          Sân Vườn & Ban Công
-        </button>
-      </div>
-
-      <!-- Plants Grid (Responsive: 1 col on mobile, 2 col on tablet, 4 col on desktop) -->
-      <div id="plantGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        <!-- Plant 1: Kim Tiền -->
-        <div class="plant-card group theme-bg-surface-alt rounded-2xl overflow-hidden border theme-border theme-shadow flex flex-col justify-between" data-cat="feng-shui office-desk">
-          <div>
-            <div class="relative overflow-hidden aspect-[4/3] bg-stone-200 dark:bg-stone-800">
-              <img 
-                src="https://images.unsplash.com/photo-1632207691143-643e2a9a9361?auto=format&fit=crop&w=700&q=80" 
-                alt="Cây Kim Tiền Phát Tài"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-              <span class="absolute top-2.5 left-2.5 bg-[#186049] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                Chiêu Tài Hút Lộc
-              </span>
-            </div>
-            <div class="p-4 sm:p-5">
-              <div class="text-[10px] uppercase font-mono text-[#4A943E]">Zamioculcas Zamiifolia</div>
-              <h3 class="text-base sm:text-lg font-bold mt-0.5">Cây Kim Tiền Phát Tài</h3>
-              <p class="text-xs theme-text-muted mt-1.5 line-clamp-2">Lá xanh mọng dày dặn, biểu tượng phú quý thịnh vượng, chịu bóng râm cực tốt.</p>
-            </div>
-          </div>
-          <div class="p-4 sm:p-5 pt-0 border-t theme-border mt-2 flex items-center justify-between">
-            <span class="text-base sm:text-lg font-bold text-[#D98327] font-mono">290.000đ</span>
-            <div class="flex gap-1.5">
-              <button onclick="previewIn3D('Cây Kim Tiền')" title="Xem 3D" class="p-2 rounded-lg bg-emerald-500/10 text-[#4A943E] hover:bg-emerald-500/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l2-1v-2.5M18 18l-2-1v-2.5"/></svg>
-              </button>
-              <button onclick="selectPlantToOrder('Cây Kim Tiền Phát Tài', '290.000đ')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#D98327] hover:bg-[#b86d1f]">
-                Chọn Mua
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Plant 2: Lưỡi Hổ -->
-        <div class="plant-card group theme-bg-surface-alt rounded-2xl overflow-hidden border theme-border theme-shadow flex flex-col justify-between" data-cat="air-purifying office-desk">
-          <div>
-            <div class="relative overflow-hidden aspect-[4/3] bg-stone-200 dark:bg-stone-800">
-              <img 
-                src="https://images.unsplash.com/photo-1593482892290-f54927ae1bf6?auto=format&fit=crop&w=700&q=80" 
-                alt="Cây Lưỡi Hổ Thái"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-              <span class="absolute top-2.5 left-2.5 bg-[#4A943E] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                Lọc Độc Tố 99%
-              </span>
-            </div>
-            <div class="p-4 sm:p-5">
-              <div class="text-[10px] uppercase font-mono text-[#4A943E]">Sansevieria Trifasciata</div>
-              <h3 class="text-base sm:text-lg font-bold mt-0.5">Cây Lưỡi Hổ Viền Vàng</h3>
-              <p class="text-xs theme-text-muted mt-1.5 line-clamp-2">Nhả oxy ban đêm, lọc formaldehyde và bức xạ điện tử máy tính bền bỉ.</p>
-            </div>
-          </div>
-          <div class="p-4 sm:p-5 pt-0 border-t theme-border mt-2 flex items-center justify-between">
-            <span class="text-base sm:text-lg font-bold text-[#D98327] font-mono">245.000đ</span>
-            <div class="flex gap-1.5">
-              <button onclick="previewIn3D('Cây Lưỡi Hổ')" title="Xem 3D" class="p-2 rounded-lg bg-emerald-500/10 text-[#4A943E] hover:bg-emerald-500/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l2-1v-2.5M18 18l-2-1v-2.5"/></svg>
-              </button>
-              <button onclick="selectPlantToOrder('Cây Lưỡi Hổ Viền Vàng', '245.000đ')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#D98327] hover:bg-[#b86d1f]">
-                Chọn Mua
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Plant 3: Bàng Singapore -->
-        <div class="plant-card group theme-bg-surface-alt rounded-2xl overflow-hidden border theme-border theme-shadow flex flex-col justify-between" data-cat="air-purifying garden-balcony">
-          <div>
-            <div class="relative overflow-hidden aspect-[4/3] bg-stone-200 dark:bg-stone-800">
-              <img 
-                src="https://images.unsplash.com/photo-1598880940080-ff9a29891b85?auto=format&fit=crop&w=700&q=80" 
-                alt="Cây Bàng Singapore"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-              <span class="absolute top-2.5 left-2.5 bg-[#186049] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                Kiến Trúc Sang Trọng
-              </span>
-            </div>
-            <div class="p-4 sm:p-5">
-              <div class="text-[10px] uppercase font-mono text-[#4A943E]">Ficus Lyrata</div>
-              <h3 class="text-base sm:text-lg font-bold mt-0.5">Bàng Singapore Nội Thất</h3>
-              <p class="text-xs theme-text-muted mt-1.5 line-clamp-2">Lá to hình đàn violin, kiến tạo vẻ đẹp hiện đại và tinh tế cho phòng khách.</p>
-            </div>
-          </div>
-          <div class="p-4 sm:p-5 pt-0 border-t theme-border mt-2 flex items-center justify-between">
-            <span class="text-base sm:text-lg font-bold text-[#D98327] font-mono">480.000đ</span>
-            <div class="flex gap-1.5">
-              <button onclick="previewIn3D('Cây Bàng Singapore')" title="Xem 3D" class="p-2 rounded-lg bg-emerald-500/10 text-[#4A943E] hover:bg-emerald-500/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l2-1v-2.5M18 18l-2-1v-2.5"/></svg>
-              </button>
-              <button onclick="selectPlantToOrder('Bàng Singapore Nội Thất', '480.000đ')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#D98327] hover:bg-[#b86d1f]">
-                Chọn Mua
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Plant 4: Kim Ngân -->
-        <div class="plant-card group theme-bg-surface-alt rounded-2xl overflow-hidden border theme-border theme-shadow flex flex-col justify-between" data-cat="feng-shui office-desk">
-          <div>
-            <div class="relative overflow-hidden aspect-[4/3] bg-stone-200 dark:bg-stone-800">
-              <img 
-                src="https://images.unsplash.com/photo-1512428813834-c702c7702b78?auto=format&fit=crop&w=700&q=80" 
-                alt="Kim Ngân Tam Tài"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-              <span class="absolute top-2.5 left-2.5 bg-[#D98327] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                Cân Bằng Ngũ Hành
-              </span>
-            </div>
-            <div class="p-4 sm:p-5">
-              <div class="text-[10px] uppercase font-mono text-[#4A943E]">Pachira Aquatica</div>
-              <h3 class="text-base sm:text-lg font-bold mt-0.5">Kim Ngân Bính Tam Tài</h3>
-              <p class="text-xs theme-text-muted mt-1.5 line-clamp-2">Thân thắt bím kiên cố tượng trưng gìn giữ của cải và bình an sự nghiệp.</p>
-            </div>
-          </div>
-          <div class="p-4 sm:p-5 pt-0 border-t theme-border mt-2 flex items-center justify-between">
-            <span class="text-base sm:text-lg font-bold text-[#D98327] font-mono">320.000đ</span>
-            <div class="flex gap-1.5">
-              <button onclick="previewIn3D('Cây Kim Ngân')" title="Xem 3D" class="p-2 rounded-lg bg-emerald-500/10 text-[#4A943E] hover:bg-emerald-500/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l2-1v-2.5M18 18l-2-1v-2.5"/></svg>
-              </button>
-              <button onclick="selectPlantToOrder('Kim Ngân Bính Tam Tài', '320.000đ')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#D98327] hover:bg-[#b86d1f]">
-                Chọn Mua
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 3 Core Values Pillars -->
-      <div id="values" class="mt-12 sm:mt-16 pt-10 border-t theme-border">
-        <div class="text-center max-w-xl mx-auto mb-8">
-          <span class="text-xs font-bold uppercase tracking-widest text-[#4A943E] block mb-1">Cam Kết Từ Tâm</span>
-          <h3 class="text-xl sm:text-2xl font-bold font-serif">3 Giá Trị Vượt Trội Dành Cho Bạn</h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          <div class="p-5 sm:p-6 rounded-2xl theme-bg-surface-alt border theme-border">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-[#4A943E] flex items-center justify-center font-bold mb-3">
-              🚚
-            </div>
-            <h4 class="font-bold text-base mb-1.5">Giao Hàng Tận Nơi An Toàn</h4>
-            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed">Đóng thùng định hình 3 lớp chống sốc chuyên dụng. Kiểm tra cây tươi tốt trước khi thanh toán.</p>
-          </div>
-
-          <div class="p-5 sm:p-6 rounded-2xl theme-bg-surface-alt border theme-border">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-[#D98327] flex items-center justify-center font-bold mb-3">
-              🌱
-            </div>
-            <h4 class="font-bold text-base mb-1.5">Tư Vấn Chăm Sóc Trọn Đời</h4>
-            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed">Tặng cẩm nang sinh học và theo dõi hỗ trợ qua Zalo 24/7 khi cây có biểu hiện thiếu dinh dưỡng.</p>
-          </div>
-
-          <div class="p-5 sm:p-6 rounded-2xl theme-bg-surface-alt border theme-border">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-[#4A943E] flex items-center justify-center font-bold mb-3">
-              🏺
-            </div>
-            <h4 class="font-bold text-base mb-1.5">Chậu Gốm Thủ Công Cao Cấp</h4>
-            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed">Chậu đất nung hoặc gốm men mờ Bát Tràng thoát nước chuẩn, bảo vệ bộ rễ cây luôn thoáng khí.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========================================================================= -->
-  <!-- 4. SECTION 3: TRẢI NGHIỆM 3D / AR GOOGLE MODEL-VIEWER                      -->
-  <!-- ========================================================================= -->
-  <section id="ar-experience" class="py-10 sm:py-16 theme-bg-page relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#D98327] block mb-1">Công Nghệ Thực Tế Tăng Cường</span>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-serif">
-          Trải Nghiệm Đặt Cây Vào Không Gian Thực
-        </h2>
-        <p class="mt-2 text-xs sm:text-sm theme-text-muted">
-          Xoay 360°, phóng to chi tiết và bật camera smartphone để ướm thử chậu cây ngay tại góc làm việc của bạn.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center theme-bg-surface p-4 sm:p-8 rounded-3xl border theme-border theme-shadow">
-        
-        <!-- Left: 3D Model Viewer Component -->
-        <div class="lg:col-span-7 flex flex-col items-center w-full">
-          <div class="w-full relative overflow-hidden rounded-2xl border theme-border">
-            <model-viewer
-              id="mainPlantViewer"
-              src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/PottedPlant/glTF-Binary/PottedPlant.glb"
-              alt="Mô hình 3D Chậu Cây Cảnh"
-              shadow-intensity="1.5"
-              camera-controls
-              touch-action="pan-y"
-              auto-rotate
-              rotation-per-second="20deg"
-              camera-orbit="45deg 75deg 2.2m"
-              field-of-view="30deg"
-              ar
-              ar-modes="webxr scene-viewer quick-look"
-              ar-scale="fixed"
-              exposure="1.05"
-            >
-              <button class="hotspot" slot="hotspot-leaf" data-position="0.05m 0.65m 0.05m" data-normal="0m 1m 0m">
-                <div class="hotspot-annotation">Lá xanh · Lọc CO2 & Formaldehyde</div>
-              </button>
-              <button class="hotspot" slot="hotspot-pot" data-position="0m 0.15m 0.18m" data-normal="0m 0m 1m">
-                <div class="hotspot-annotation">Chậu gốm mộc · Thoát ẩm rễ tối ưu</div>
-              </button>
-
-              <button slot="ar-button" class="absolute bottom-3 right-3 bg-[#D98327] hover:bg-[#b86d1f] text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-md flex items-center gap-1.5 transition-all">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                Xem trong phòng bạn (AR)
-              </button>
-            </model-viewer>
-          </div>
-
-          <!-- Controls Toolbar -->
-          <div class="mt-3 w-full flex items-center justify-between text-xs gap-2">
-            <span class="theme-text-muted font-medium">Chế độ xem 360° tương tác</span>
-            <div class="flex gap-2">
-              <button id="toggleSpinBtn" onclick="toggleModelSpin()" class="px-2.5 py-1 rounded-md theme-bg-surface-alt theme-border border text-xs font-medium">
-                Dừng xoay
-              </button>
-              <button onclick="resetModelView()" class="px-2.5 py-1 rounded-md theme-bg-surface-alt theme-border border text-xs font-medium">
-                Góc chuẩn
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: 3 Quick Steps -->
-        <div class="lg:col-span-5 space-y-4">
-          <h3 class="text-lg sm:text-xl font-bold font-serif">3 Bước Ướm Cây Vào Không Gian Thực</h3>
+        <!-- 3D Viewport Box -->
+        <div class="lg:col-span-8 relative">
           
-          <div class="space-y-3 text-xs sm:text-sm">
-            <div class="p-3.5 rounded-xl theme-bg-surface-alt border theme-border flex gap-3 items-start">
-              <span class="w-6 h-6 rounded-lg bg-[#186049] text-white font-bold flex items-center justify-center shrink-0 text-xs">1</span>
-              <div>
-                <strong class="block theme-text-main">Bấm "Xem trong phòng bạn (AR)"</strong>
-                <span class="theme-text-muted text-xs">Trình duyệt trên iPhone hoặc Android sẽ kích hoạt camera WebXR tức thì.</span>
+          <model-viewer 
+            id="mainPlantViewer"
+            src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/PottedPlant/glTF-Binary/PottedPlant.glb"
+            ios-src=""
+            alt="Mô hình 3D cây cảnh trong chậu gốm EcoGreen Flora"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            auto-rotate
+            rotation-per-second="18deg"
+            camera-orbit="45deg 75deg 2.2m"
+            field-of-view="30deg"
+            shadow-intensity="1.5"
+            shadow-softness="0.8"
+            exposure="1.1"
+          >
+            <!-- Hotspot 1: Tán lá -->
+            <button class="hotspot" slot="hotspot-leaf" data-position="0m 0.65m 0.05m" data-normal="0m 1m 0m">
+              <div class="hotspot-annotation">Gân lá dày bóng · Lọc CO₂ & bụi mịn</div>
+            </button>
+
+            <!-- Hotspot 2: Chậu gốm nung mộc -->
+            <button class="hotspot" slot="hotspot-pot" data-position="0m 0.15m 0.2m" data-normal="0m 0m 1m">
+              <div class="hotspot-annotation">Chậu gốm mộc nung 1200°C chống ẩm mốc</div>
+            </button>
+
+            <!-- AR View Trigger Button (Native WebXR) -->
+            <button 
+              slot="ar-button" 
+              class="absolute bottom-5 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] text-white font-bold text-xs sm:text-sm shadow-2xl border border-white/40 backdrop-blur-md flex items-center gap-2 cursor-pointer active:scale-95 transition-all z-20"
+            >
+              <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+              </svg>
+              <span>Xem AR Trong Không Gian Của Bạn</span>
+            </button>
+          </model-viewer>
+
+          <!-- Interactive Hint Overlay -->
+          <div class="absolute top-4 left-4 p-2.5 rounded-xl bg-black/50 backdrop-blur-md border border-white/15 text-white/90 text-xs flex items-center gap-2 pointer-events-none">
+            <svg class="w-4 h-4 text-[#4ADE80]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/>
+            </svg>
+            <span>Dùng ngón tay / chuột để xoay và phóng to thu nhỏ</span>
+          </div>
+
+        </div>
+
+        <!-- Right: Botanical Specs & Diagram Callouts (Inspired by Theme_Color Moodboard) -->
+        <div class="lg:col-span-4 space-y-4">
+          
+          <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-[#4ADE80] font-mono uppercase tracking-wider">Botanical Taxonomy</span>
+              <span class="text-[10px] bg-white/15 px-2 py-0.5 rounded text-white font-mono">SPEC: AR-09</span>
+            </div>
+            <h3 class="text-xl font-bold font-serif text-white">Monstera Deliciosa</h3>
+            <p class="text-xs text-white/75">Họ Ráy (Araceae) · Xuất xứ từ rừng nhiệt đới Trung Mỹ. Được tôn vinh là nữ hoàng của không gian xanh nội thất hiện đại.</p>
+          </div>
+
+          <!-- Feature Callouts (Color, Texture, Vein, Pattern from Moodboard) -->
+          <div class="space-y-2.5 text-xs">
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-between">
+              <span class="text-white/80">Màu sắc (Color):</span>
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded-full bg-[#186049] border border-white"></span>
+                <span class="w-4 h-4 rounded-full bg-[#4ADE80] border border-white"></span>
+                <span class="font-mono text-white text-[11px]">#186049 · #4ADE80</span>
               </div>
             </div>
 
-            <div class="p-3.5 rounded-xl theme-bg-surface-alt border theme-border flex gap-3 items-start">
-              <span class="w-6 h-6 rounded-lg bg-[#4A943E] text-white font-bold flex items-center justify-center shrink-0 text-xs">2</span>
-              <div>
-                <strong class="block theme-text-main">Rà camera mặt phẳng bàn hoặc sàn</strong>
-                <span class="theme-text-muted text-xs">Chậu cây 3D tỷ lệ 1:1 xuất hiện chân thực theo đúng kích thước ngoài đời.</span>
-              </div>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-between">
+              <span class="text-white/80">Gân lá & Kết cấu:</span>
+              <span class="text-white font-semibold">Tự nhiên, rãnh xẻ đối xứng</span>
             </div>
 
-            <div class="p-3.5 rounded-xl theme-bg-surface-alt border theme-border flex gap-3 items-start">
-              <span class="w-6 h-6 rounded-lg bg-[#D98327] text-white font-bold flex items-center justify-center shrink-0 text-xs">3</span>
-              <div>
-                <strong class="block theme-text-main">Ngắm ánh sáng thực & Gửi đơn</strong>
-                <span class="theme-text-muted text-xs">Tự tin lựa chọn vị trí đẹp nhất rồi bấm đặt cây nhận hàng tận nhà.</span>
-              </div>
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-between">
+              <span class="text-white/80">Khả năng lọc khí:</span>
+              <span class="text-[#4ADE80] font-bold">Lọc bụi mịn PM2.5, benzen</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-between">
+              <span class="text-white/80">Kích thước chậu:</span>
+              <span class="text-white font-mono">Đường kính 22cm · Cao 50cm</span>
             </div>
           </div>
 
-          <a href="#order-form" class="inline-flex w-full items-center justify-center py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#D98327] hover:bg-[#b86d1f] shadow-md transition-all text-center">
-            Ưng Ý Mẫu Này - Đặt Hàng Ngay
-          </a>
+          <!-- Direct Order Trigger -->
+          <button 
+            onclick="selectPlantToOrder('Monstera Deliciosa 3D WebXR', '390.000đ')"
+            class="w-full py-3.5 px-4 rounded-xl text-center font-bold text-white bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] shadow-lg border border-white/20 active:scale-95 transition-all text-sm"
+          >
+            Đặt Mua Mẫu Cây Này (390.000đ)
+          </button>
+
         </div>
 
       </div>
 
-    </div>
-  </section>
+    </section>
 
 
-  <!-- ========================================================================= -->
-  <!-- 5. SECTION 4: ĐÁNH GIÁ TỪ KHÁCH HÀNG THỰC TẾ                              -->
-  <!-- ========================================================================= -->
-  <section id="testimonials" class="py-10 sm:py-16 theme-bg-surface border-t border-b theme-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ========================================================================= -->
+    <!-- 6. SECTION 5: TƯ VẤN PHONG THỦY NGŨ HÀNH                                  -->
+    <!-- ========================================================================= -->
+    <section id="feng-shui-consult" class="space-y-6">
       
-      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#4A943E] block mb-1">Khách Hàng Chia Sẻ</span>
-        <h2 class="text-2xl sm:text-3xl font-bold font-serif">Đánh Giá Từ Người Trải Nghiệm</h2>
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs uppercase tracking-widest text-[#4ADE80] font-bold px-3 py-1 rounded-full bg-white/10 border border-white/20 inline-block">Cân Bằng Sinh Khí</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white drop-shadow">Chọn Cây Theo Bản Mệnh Ngũ Hành</h2>
+        <p class="text-sm sm:text-base text-white/80">Cây xanh phong thủy hợp mệnh giúp gia chủ thu hút may mắn, thuận hòa gia đạo và công việc hanh thông.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         
-        <!-- Review 1: Sinh viên -->
-        <div class="p-5 sm:p-6 rounded-2xl theme-bg-surface-alt border theme-border flex flex-col justify-between">
-          <div>
-            <div class="flex text-amber-400 text-xs mb-2.5">★★★★★ 5.0</div>
-            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed italic">
-              "Góc học tập sáng bừng từ ngày có chậu Kim Ngân để bàn. Cây sống khỏe dù phòng trọ ít nắng. Chức năng xem 3D trước khi đặt giúp mình đo vừa khít vị trí cạnh giá sách!"
-            </p>
+        <!-- Mệnh Kim -->
+        <div class="glass-card p-5 space-y-3 border-t-4 border-amber-200">
+          <div class="flex items-center justify-between">
+            <span class="font-serif font-bold text-lg text-white">Mệnh Kim</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-white/15 text-amber-200 font-mono">Trắng/Vàng</span>
           </div>
-          <div class="mt-4 pt-3 border-t theme-border flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-[#4A943E] font-bold flex items-center justify-center text-xs">MA</div>
-            <div>
-              <strong class="text-xs sm:text-sm block">Nguyễn Minh Anh</strong>
-              <span class="text-[11px] theme-text-muted">Sinh viên ĐH Ngoại Thương · Hà Nội</span>
-            </div>
+          <p class="text-xs text-white/75 leading-relaxed">Hợp cây có viền vàng, lá trắng bạc: Bạch Mã Hoàng Tử, Lưỡi Hổ viền vàng, Lan Ý.</p>
+          <div class="pt-2 border-t border-white/15 text-[11px] text-[#4ADE80]">
+            Hướng đặt: <strong>Tây, Tây Bắc</strong>
           </div>
         </div>
 
-        <!-- Review 2: Dân văn phòng -->
-        <div class="p-5 sm:p-6 rounded-2xl theme-bg-surface-alt border theme-border flex flex-col justify-between">
-          <div>
-            <div class="flex text-amber-400 text-xs mb-2.5">★★★★★ 5.0</div>
-            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed italic">
-              "Ngồi code máy tính 10 tiếng mỗi ngày rất mỏi mắt. Đặt chậu Lưỡi Hổ cạnh màn hình vừa hút bức xạ vừa tạo cảm giác thư giãn dịu mắt. Cây giao đến lá thẳng tắp không dập gãy."
-            </p>
+        <!-- Mệnh Mộc -->
+        <div class="glass-card p-5 space-y-3 border-t-4 border-[#4ADE80]">
+          <div class="flex items-center justify-between">
+            <span class="font-serif font-bold text-lg text-white">Mệnh Mộc</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-white/15 text-[#4ADE80] font-mono">Xanh lá</span>
           </div>
-          <div class="mt-4 pt-3 border-t theme-border flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-[#D98327] font-bold flex items-center justify-center text-xs">HL</div>
-            <div>
-              <strong class="text-xs sm:text-sm block">Trần Hoàng Long</strong>
-              <span class="text-[11px] theme-text-muted">Senior Software Engineer · FPT Software</span>
-            </div>
+          <p class="text-xs text-white/75 leading-relaxed">Hợp cây tán rộng, lá xanh ngắt: Cây Kim Ngân, Bàng Singapore, Trầu Bà Xanh, Cây Phát Tài.</p>
+          <div class="pt-2 border-t border-white/15 text-[11px] text-[#4ADE80]">
+            Hướng đặt: <strong>Đông, Đông Nam</strong>
           </div>
         </div>
 
-        <!-- Review 3: Chủ căn hộ -->
-        <div class="p-5 sm:p-6 rounded-2xl theme-bg-surface-alt border theme-border flex flex-col justify-between">
-          <div>
-            <div class="flex text-amber-400 text-xs mb-2.5">★★★★★ 5.0</div>
-            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed italic">
-              "Chậu Bàng Singapore và Trầu Bà Thanh Xuân giao đến nguyên vẹn, xanh mướt. Dịch vụ gói cây rất cẩn thận, chậu gốm men thô cực kỳ thẩm mỹ nâng tầm phòng khách căn hộ mình hẳn."
-            </p>
+        <!-- Mệnh Thủy -->
+        <div class="glass-card p-5 space-y-3 border-t-4 border-sky-400">
+          <div class="flex items-center justify-between">
+            <span class="font-serif font-bold text-lg text-white">Mệnh Thủy</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-white/15 text-sky-300 font-mono">Xanh biển/Đen</span>
           </div>
-          <div class="mt-4 pt-3 border-t theme-border flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-[#4A943E] font-bold flex items-center justify-center text-xs">BN</div>
-            <div>
-              <strong class="text-xs sm:text-sm block">Lê Bích Ngọc</strong>
-              <span class="text-[11px] theme-text-muted">Chủ căn hộ Masteri West Heights · Hà Nội</span>
-            </div>
+          <p class="text-xs text-white/75 leading-relaxed">Hợp cây thủy sinh hoặc lá mềm: Cây Kim Tiền thủy canh, Lan Ý, Vạn Niên Thanh, Cây Phát Lộc.</p>
+          <div class="pt-2 border-t border-white/15 text-[11px] text-[#4ADE80]">
+            Hướng đặt: <strong>Bắc</strong>
+          </div>
+        </div>
+
+        <!-- Mệnh Hỏa -->
+        <div class="glass-card p-5 space-y-3 border-t-4 border-rose-500">
+          <div class="flex items-center justify-between">
+            <span class="font-serif font-bold text-lg text-white">Mệnh Hỏa</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-white/15 text-rose-300 font-mono">Đỏ/Hồng/Tím</span>
+          </div>
+          <p class="text-xs text-white/75 leading-relaxed">Hợp cây có sắc đỏ rực rỡ: Trầu Bà Đế Vương Đỏ, Cây Phú Quý, Vạn Lộc, Cây Hồng Môn.</p>
+          <div class="pt-2 border-t border-white/15 text-[11px] text-[#4ADE80]">
+            Hướng đặt: <strong>Nam</strong>
+          </div>
+        </div>
+
+        <!-- Mệnh Thổ -->
+        <div class="glass-card p-5 space-y-3 border-t-4 border-[#D98327]">
+          <div class="flex items-center justify-between">
+            <span class="font-serif font-bold text-lg text-white">Mệnh Thổ</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-white/15 text-orange-300 font-mono">Nâu/Cam đất</span>
+          </div>
+          <p class="text-xs text-white/75 leading-relaxed">Hợp chậu gốm đất nung với cây: Cây Lưỡi Hổ, Sen Đá Nâu, Cây Thiết Mộc Lan, Cô Tòng đuôi lươn.</p>
+          <div class="pt-2 border-t border-white/15 text-[11px] text-[#4ADE80]">
+            Hướng đặt: <strong>Đông Bắc, Tây Nam</strong>
           </div>
         </div>
 
       </div>
 
-    </div>
-  </section>
+    </section>
 
 
-  <!-- ========================================================================= -->
-  <!-- 6. SECTION 5: FORM ĐẶT HÀNG & TƯ VẤN PHONG THỦY (TAKE ACTIONS)            -->
-  <!-- ========================================================================= -->
-  <section id="order-form" class="py-10 sm:py-16 theme-bg-page relative">
-    <div id="feng-shui-consult" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ========================================================================= -->
+    <!-- 7. SECTION 6: ĐÁNH GIÁ KHÁCH HÀNG (TESTIMONIALS)                          -->
+    <!-- ========================================================================= -->
+    <section id="testimonials" class="space-y-6">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs uppercase tracking-widest text-[#4ADE80] font-bold px-3 py-1 rounded-full bg-white/10 border border-white/20 inline-block">Cảm Nhận Thực Tế</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white drop-shadow">Khách Hàng Nói Gì Về EcoGreen</h2>
+        <p class="text-sm sm:text-base text-white/80">Hơn 15.000+ chậu cây đã được chuyển giao thành công đến các văn phòng và căn hộ trên toàn quốc.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Left: Phong Thủy & Hotline -->
-        <div class="lg:col-span-5 space-y-4">
-          <span class="text-xs font-bold uppercase tracking-widest text-[#D98327]">Khởi Sắc Vượng Khí</span>
-          <h2 class="text-2xl sm:text-3xl font-bold font-serif leading-tight">
-            Tư Vấn Cây Hợp Mệnh & Đặt Hàng Nhanh
-          </h2>
-          <p class="text-xs sm:text-sm theme-text-muted leading-relaxed">
-            Chuyên gia phong thủy nông học của EcoGreen Flora sẽ liên hệ giải đáp tuổi mệnh, hướng đặt cây đón ánh sáng và chiêu tài lộc tốt nhất.
+        <!-- Review 1 -->
+        <div class="glass-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex text-amber-300 text-sm">★★★★★</div>
+            <p class="text-xs sm:text-sm text-white/85 italic leading-relaxed">
+              "Tính năng xem AR trực tiếp trên điện thoại quá tiện lợi! Mình ướm thử cây Kim Tiền lên bàn làm việc thấy vừa in rồi mới bấm đặt mua. Giao hàng bọc mút rất cẩn thận, cây tươi xanh mướt không rụng 1 chiếc lá nào."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-white/15">
+            <div class="w-10 h-10 rounded-full bg-[#186049] border border-white/30 flex items-center justify-center font-bold text-white text-sm">
+              TH
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Thanh Hằng</div>
+              <div class="text-[11px] text-white/70">Trưởng phòng Marketing, Q.1 TP.HCM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="glass-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex text-amber-300 text-sm">★★★★★</div>
+            <p class="text-xs sm:text-sm text-white/85 italic leading-relaxed">
+              "Mua cây Lưỡi Hổ và Lan Ý đặt phòng làm việc máy lạnh, cả tháng rồi mà cây vẫn xanh tốt. Đặc biệt chậu gốm mộc nung cầm rất đầm tay, sang trọng hơn hẳn mấy chậu nhựa ngoài chợ hoa."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-white/15">
+            <div class="w-10 h-10 rounded-full bg-[#D98327] border border-white/30 flex items-center justify-center font-bold text-white text-sm">
+              MA
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Minh Anh</div>
+              <div class="text-[11px] text-white/70">Kiến trúc sư nội thất, Cầu Giấy Hà Nội</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="glass-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex text-amber-300 text-sm">★★★★★</div>
+            <p class="text-xs sm:text-sm text-white/85 italic leading-relaxed">
+              "Được tư vấn cây Trầu Bà Đế Vương theo mệnh Hỏa cực kỳ tận tâm. Đội ngũ hỗ trợ hướng dẫn cả chu kỳ tưới nước và bón phân theo mùa. Chính sách bảo hành 30 ngày 1 đổi 1 làm mình hoàn toàn an tâm!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-white/15">
+            <div class="w-10 h-10 rounded-full bg-[#4A943E] border border-white/30 flex items-center justify-center font-bold text-white text-sm">
+              QP
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Quang Phúc</div>
+              <div class="text-[11px] text-white/70">Founder Startup Công nghệ, Đà Nẵng</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 8. SECTION 7: FORM ĐẶT CÂY & TƯ VẤN (GLASSMORPHISM ORDER FORM)            -->
+    <!-- ========================================================================= -->
+    <section id="order-form" class="glass-panel p-6 sm:p-10 lg:p-14 relative overflow-hidden">
+      
+      <div class="max-w-3xl mx-auto space-y-8">
+        
+        <div class="text-center space-y-3">
+          <span class="text-xs uppercase tracking-widest text-[#4ADE80] font-bold px-3 py-1 rounded-full bg-white/15 border border-white/20 inline-block">Đặt Hàng Tiện Lợi</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white drop-shadow">Đăng Ký Tư Vấn & Nhận Cây Tận Nơi</h2>
+          <p class="text-sm sm:text-base text-white/80">
+            Điền thông tin bên dưới để chuyên viên cây cảnh gọi lại hỗ trợ trong <strong>15 phút</strong>. Miễn phí vận chuyển cho đơn hàng từ 2 chậu cây!
           </p>
-
-          <div class="p-4 sm:p-5 rounded-2xl theme-bg-surface border theme-border space-y-2 text-xs">
-            <strong class="block text-sm text-[#186049] dark:text-[#4ade80]">Gợi Ý Cây Hợp Bản Mệnh:</strong>
-            <div class="flex justify-between py-1 border-b theme-border">
-              <span>Mệnh Kim:</span>
-              <span class="theme-text-muted">Lưỡi Hổ viền vàng, Bạch Mã</span>
-            </div>
-            <div class="flex justify-between py-1 border-b theme-border">
-              <span>Mệnh Mộc:</span>
-              <span class="theme-text-muted">Kim Ngân, Bàng Singapore</span>
-            </div>
-            <div class="flex justify-between py-1 border-b theme-border">
-              <span>Mệnh Thủy:</span>
-              <span class="theme-text-muted">Kim Tiền, Lan Ý</span>
-            </div>
-            <div class="flex justify-between py-1 border-b theme-border">
-              <span>Mệnh Hỏa:</span>
-              <span class="theme-text-muted">Đế Vương, Phú Quý</span>
-            </div>
-            <div class="flex justify-between py-1">
-              <span>Mệnh Thổ:</span>
-              <span class="theme-text-muted">Sen Đá, Lưỡi Hổ</span>
-            </div>
-          </div>
-
-          <div class="p-4 rounded-2xl bg-[#186049] text-white">
-            <span class="text-xs text-emerald-200 block">Hotline tư vấn nhanh 24/7:</span>
-            <span class="text-xl sm:text-2xl font-bold font-mono text-[#D98327]">1900 6868 · 0938.888.686</span>
-          </div>
         </div>
 
-        <!-- Right: Registration Form -->
-        <div class="lg:col-span-7">
-          <div class="p-5 sm:p-8 rounded-3xl theme-bg-surface border theme-border theme-shadow">
+        <!-- Order Form Element -->
+        <form id="plantOrderForm" onsubmit="handleOrderSubmit(event)" class="space-y-5">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            <form id="orderForm" onsubmit="handleOrderSubmit(event)" class="space-y-4">
-              <div>
-                <h3 class="text-lg sm:text-xl font-bold">Phiếu Đăng Ký Đặt Cây & Tư Vấn Miễn Phí</h3>
-                <p class="text-xs theme-text-muted mt-1">Chuyên gia EcoGreen Flora sẽ gọi lại xác nhận trong vòng 15 phút.</p>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label class="block text-xs font-bold uppercase mb-1">Họ và tên *</label>
-                  <input 
-                    type="text" 
-                    id="clientName" 
-                    required 
-                    placeholder="Nguyễn Văn An"
-                    class="w-full px-3.5 py-2.5 rounded-xl border theme-border theme-bg-surface-alt text-sm focus:ring-2 focus:ring-[#186049] outline-none"
-                  />
-                </div>
-                <div>
-                  <label class="block text-xs font-bold uppercase mb-1">Số điện thoại *</label>
-                  <input 
-                    type="tel" 
-                    id="clientPhone" 
-                    required 
-                    pattern="[0-9]{10,11}"
-                    placeholder="0912 345 678"
-                    class="w-full px-3.5 py-2.5 rounded-xl border theme-border theme-bg-surface-alt text-sm focus:ring-2 focus:ring-[#186049] outline-none"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold uppercase mb-1">Địa chỉ nhận hàng *</label>
-                <input 
-                  type="text" 
-                  id="clientAddress" 
-                  required 
-                  placeholder="Số nhà, tên đường, quận/huyện, tỉnh/thành phố"
-                  class="w-full px-3.5 py-2.5 rounded-xl border theme-border theme-bg-surface-alt text-sm focus:ring-2 focus:ring-[#186049] outline-none"
-                />
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label class="block text-xs font-bold uppercase mb-1">Loại cây quan tâm</label>
-                  <select 
-                    id="clientPlant" 
-                    class="w-full px-3.5 py-2.5 rounded-xl border theme-border theme-bg-surface-alt text-sm focus:ring-2 focus:ring-[#186049] outline-none"
-                  >
-                    <option value="Chưa chọn (Cần tư vấn thêm)">-- Chọn loại cây cảnh --</option>
-                    <option value="Cây Kim Tiền Phát Tài">Cây Kim Tiền Phát Tài (290.000đ)</option>
-                    <option value="Cây Lưỡi Hổ Viền Vàng">Cây Lưỡi Hổ Viền Vàng (245.000đ)</option>
-                    <option value="Bàng Singapore Nội Thất">Bàng Singapore Nội Thất (480.000đ)</option>
-                    <option value="Kim Ngân Bính Tam Tài">Kim Ngân Bính Tam Tài (320.000đ)</option>
-                    <option value="Trầu Bà Đế Vương Xanh">Trầu Bà Đế Vương Xanh (350.000đ)</option>
-                    <option value="Combo 3 Chậu Lọc Văn Phòng">Combo 3 Chậu Lọc Văn Phòng</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-bold uppercase mb-1">Năm sinh / Mệnh cần tư vấn</label>
-                  <select 
-                    id="clientElement" 
-                    class="w-full px-3.5 py-2.5 rounded-xl border theme-border theme-bg-surface-alt text-sm focus:ring-2 focus:ring-[#186049] outline-none"
-                  >
-                    <option value="Chưa rõ mệnh, nhờ chuyên gia xem giúp">Chưa rõ mệnh, nhờ xem giúp</option>
-                    <option value="Mệnh Kim">Mệnh Kim</option>
-                    <option value="Mệnh Mộc">Mệnh Mộc</option>
-                    <option value="Mệnh Thủy">Mệnh Thủy</option>
-                    <option value="Mệnh Hỏa">Mệnh Hỏa</option>
-                    <option value="Mệnh Thổ">Mệnh Thổ</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold uppercase mb-1">Ghi chú vị trí đặt cây (nếu có)</label>
-                <textarea 
-                  id="clientNote" 
-                  rows="2" 
-                  placeholder="Ví dụ: Bàn làm việc ít nắng, ban công hướng Tây, tặng khai trương..."
-                  class="w-full px-3.5 py-2 rounded-xl border theme-border theme-bg-surface-alt text-sm focus:ring-2 focus:ring-[#186049] outline-none"
-                ></textarea>
-              </div>
-
-              <button 
-                type="submit" 
-                class="w-full py-3.5 px-6 rounded-xl text-sm sm:text-base font-bold text-white bg-[#D98327] hover:bg-[#b86d1f] shadow-md active:scale-95 transition-all flex items-center justify-center gap-2"
-              >
-                <span>GỬI ĐƠN HÀNG & TƯ VẤN</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </button>
-
-              <p class="text-center text-[11px] theme-text-muted">
-                🔒 Thông tin của bạn được cam kết bảo mật 100%. Không làm phiền hay spam.
-              </p>
-            </form>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========================================================================= -->
-  <!-- 7. FOOTER                                                                 -->
-  <!-- ========================================================================= -->
-  <footer class="bg-[#186049] text-white py-10 sm:py-14 border-t border-emerald-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-emerald-800/80">
-        
-        <div class="md:col-span-6 space-y-3">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-[#4A943E] flex items-center justify-center text-white">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 8 20c7 0 13-7 13-16 0-.6-.4-1-1-1-.3 0-.6.1-.8.3L17 8m-4.5 5.5c-1.5.5-3 1.5-4.5 3 1.5-2 2.5-3.5 3-4.5l1.5 1.5Z"/></svg>
+            <!-- Họ và tên -->
+            <div class="space-y-1.5 text-left">
+              <label for="clientName" class="block text-xs sm:text-sm font-semibold text-white">Họ và tên của bạn <span class="text-rose-400">*</span></label>
+              <input 
+                type="text" 
+                id="clientName" 
+                required 
+                placeholder="Ví dụ: Nguyễn Văn A"
+                class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder:text-white/40 focus:ring-2 focus:ring-[#4ADE80]"
+              />
             </div>
-            <span class="text-xl font-bold font-serif">EcoGreen Flora</span>
+
+            <!-- Số điện thoại -->
+            <div class="space-y-1.5 text-left">
+              <label for="clientPhone" class="block text-xs sm:text-sm font-semibold text-white">Số điện thoại nhận hàng <span class="text-rose-400">*</span></label>
+              <input 
+                type="tel" 
+                id="clientPhone" 
+                required 
+                placeholder="Ví dụ: 0912 345 678"
+                class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder:text-white/40 focus:ring-2 focus:ring-[#4ADE80]"
+              />
+            </div>
+
           </div>
-          <p class="text-xs sm:text-sm text-emerald-100/85 leading-relaxed max-w-md">
-            Phủ xanh không gian sống hiện đại kết hợp công nghệ xem trước 3D/AR. Tận hưởng nguồn năng lượng xanh tinh khôi ngay trong ngôi nhà bạn.
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Chọn loại cây -->
+            <div class="space-y-1.5 text-left">
+              <label for="clientPlant" class="block text-xs sm:text-sm font-semibold text-white">Loại cây bạn chọn <span class="text-rose-400">*</span></label>
+              <select 
+                id="clientPlant" 
+                required 
+                class="glass-input w-full px-4 py-3 rounded-xl text-sm text-white [&>option]:text-black focus:ring-2 focus:ring-[#4ADE80]"
+              >
+                <option value="Cây Kim Tiền (Phát Tài) - 285.000đ">Cây Kim Tiền (Phát Tài) - 285.000đ</option>
+                <option value="Cây Lưỡi Hổ Thái Viền Vàng - 195.000đ">Cây Lưỡi Hổ Thái Viền Vàng - 195.000đ</option>
+                <option value="Cây Bàng Singapore Mini - 340.000đ">Cây Bàng Singapore Mini - 340.000đ</option>
+                <option value="Trầu Bà Đế Vương Đỏ - 250.000đ">Trầu Bà Đế Vương Đỏ - 250.000đ</option>
+                <option value="Cây Kim Ngân Thân Bính - 220.000đ">Cây Kim Ngân Thân Bính - 220.000đ</option>
+                <option value="Cây Lan Ý (Huệ Hòa Bình) - 210.000đ">Cây Lan Ý (Huệ Hòa Bình) - 210.000đ</option>
+                <option value="Tư vấn chọn cây theo không gian phòng">Chưa biết chọn cây nào (Tư vấn giúp tôi)</option>
+              </select>
+            </div>
+
+            <!-- Bản mệnh phong thủy -->
+            <div class="space-y-1.5 text-left">
+              <label for="clientElement" class="block text-xs sm:text-sm font-semibold text-white">Bản mệnh phong thủy (nếu có)</label>
+              <select 
+                id="clientElement" 
+                class="glass-input w-full px-4 py-3 rounded-xl text-sm text-white [&>option]:text-black focus:ring-2 focus:ring-[#4ADE80]"
+              >
+                <option value="Không yêu cầu (chỉ cần lọc không khí)">Không yêu cầu (chỉ cần lọc không khí tốt)</option>
+                <option value="Mệnh Kim (Sinh năm 1992, 1993, 2000, 2001...)">Mệnh Kim</option>
+                <option value="Mệnh Mộc (Sinh năm 1988, 1989, 2002, 2003...)">Mệnh Mộc</option>
+                <option value="Mệnh Thủy (Sinh năm 1996, 1997, 2004, 2005...)">Mệnh Thủy</option>
+                <option value="Mệnh Hỏa (Sinh năm 1986, 1987, 1994, 1995...)">Mệnh Hỏa</option>
+                <option value="Mệnh Thổ (Sinh năm 1990, 1991, 1998, 1999...)">Mệnh Thổ</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Địa chỉ nhận hàng -->
+          <div class="space-y-1.5 text-left">
+            <label for="clientAddress" class="block text-xs sm:text-sm font-semibold text-white">Địa chỉ giao hàng tận nơi <span class="text-rose-400">*</span></label>
+            <input 
+              type="text" 
+              id="clientAddress" 
+              required 
+              placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố"
+              class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder:text-white/40 focus:ring-2 focus:ring-[#4ADE80]"
+            />
+          </div>
+
+          <!-- Ghi chú thêm -->
+          <div class="space-y-1.5 text-left">
+            <label for="clientNote" class="block text-xs sm:text-sm font-semibold text-white">Ghi chú thêm cho shop (tùy chọn)</label>
+            <textarea 
+              id="clientNote" 
+              rows="3" 
+              placeholder="Ví dụ: Giao giờ hành chính, cần viết thiệp chúc mừng sinh nhật tặng sếp..."
+              class="glass-input w-full px-4 py-3 rounded-xl text-sm placeholder:text-white/40 focus:ring-2 focus:ring-[#4ADE80]"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              class="w-full py-4 px-6 rounded-2xl text-base sm:text-lg font-bold text-white bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] hover:to-[#D98327] shadow-xl shadow-orange-950/40 border border-white/30 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Xác Nhận Đặt Hàng & Hẹn Gọi Lại Trong 15 Phút</span>
+            </button>
+            <div class="text-[12px] text-white/70 text-center mt-2.5">
+              🔒 Thông tin của bạn được bảo mật tuyệt đối · Kiểm tra cây ưng ý mới thanh toán tiền (COD)
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================================================= -->
+  <!-- 9. FOOTER (GLASSMORPHIC FOOTER THEO TỔNG THỂ)                            -->
+  <!-- ========================================================================= -->
+  <footer class="glass-nav mt-12 py-10 sm:py-14 text-white/80 border-t border-white/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        
+        <!-- Col 1: Brand & Bio -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#4ADE80] to-[#186049] flex items-center justify-center text-white border border-white/30">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 8 20c7 0 13-7 13-16 0-.6-.4-1-1-1-.3 0-.6.1-.8.3L17 8m-4.5 5.5c-1.5.5-3 1.5-4.5 3 1.5-2 2.5-3.5 3-4.5l1.5 1.5Z"/>
+              </svg>
+            </div>
+            <span class="font-serif font-bold text-xl text-white">EcoGreen Flora</span>
+          </div>
+          <p class="text-xs sm:text-sm text-white/75 leading-relaxed">
+            Phủ Xanh Không Gian Sống - Mang Thiên Nhiên & Tài Lộc Vào Nhà Bạn. Trải nghiệm xem mô hình 3D/AR chân thực trước khi mua.
           </p>
-          <div class="text-xs text-emerald-200/90 space-y-1 pt-1">
-            <p><strong>Hotline:</strong> 1900 6868 - 0938.888.686</p>
-            <p><strong>Showroom HCM:</strong> 68 Đường Hoa Lan, Phường 2, Phú Nhuận</p>
-            <p><strong>Showroom HN:</strong> 102 Hoàng Hoa Thám, Tây Hồ</p>
+          <div class="text-xs text-white/90 font-mono">
+            Mở cửa: 08:00 - 21:00 (Thứ 2 - Chủ Nhật)
           </div>
         </div>
 
-        <div class="md:col-span-6 space-y-3">
-          <h4 class="text-sm font-bold uppercase tracking-wider text-emerald-200">Cam Kết Chất Lượng</h4>
-          <div class="p-4 rounded-xl bg-emerald-900/60 border border-emerald-700/50 text-xs text-emerald-100 space-y-1.5">
-            <p class="font-bold text-white flex items-center gap-1.5">
-              <span class="text-[#D98327] font-mono">✓</span> Bảo Hành Cây 1 Đổi 1 Trong 7 Ngày
-            </p>
-            <p class="text-[11px] text-emerald-200/80 leading-relaxed">
-              Nếu cây gặp tình trạng héo úa hoặc hư hại do quá trình vận chuyển, chúng tôi cam kết đổi chậu cây mới 100% tận nhà hoàn toàn miễn phí.
-            </p>
+        <!-- Col 2: Hệ thống vườn ươm & Showroom -->
+        <div class="space-y-3 text-xs sm:text-sm">
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-mono">Hệ Thống Showroom</h4>
+          <p class="text-white/75">
+            📍 <strong>Showroom 1:</strong> 128 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh
+          </p>
+          <p class="text-white/75">
+            📍 <strong>Showroom 2:</strong> 45 Phố Hoàng Cầu, Phường Ô Chợ Dừa, Đống Đa, Hà Nội
+          </p>
+          <p class="text-white/75">
+            🌿 <strong>Vườn ươm:</strong> Ấp Tân Bình, Xã Bình Minh, Trảng Bom, Đồng Nai
+          </p>
+        </div>
+
+        <!-- Col 3: Chính sách & Cam kết -->
+        <div class="space-y-3 text-xs sm:text-sm">
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-mono">Chính Sách & Cam Kết</h4>
+          <ul class="space-y-1.5 text-white/75">
+            <li>✓ Bảo hành 1 đổi 1 trong vòng 30 ngày</li>
+            <li>✓ Miễn phí ship đơn hàng từ 2 chậu cây</li>
+            <li>✓ Đóng gói thùng carton chống sốc chuyên dụng</li>
+            <li>✓ Hướng dẫn chăm sóc trọn đời cây cảnh</li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Liên hệ & Tổng đài -->
+        <div class="space-y-3 text-xs sm:text-sm">
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-mono">Tổng Đài Hỗ Trợ</h4>
+          <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
+            <span class="text-[11px] text-white/70 block">Hotline đặt cây nhanh:</span>
+            <a href="tel:19006868" class="text-xl font-bold text-[#4ADE80] font-mono tracking-wider block hover:underline">1900 6868</a>
           </div>
+          <p class="text-[11px] text-white/75">
+            Email: <strong class="text-white font-mono">support@ecogreenflora.vn</strong>
+          </p>
         </div>
 
       </div>
 
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-emerald-200/70 gap-3">
-        <p>© 2026 EcoGreen Flora. Tự hào phủ xanh không gian sống Việt.</p>
-        <p>Hỗ trợ WebXR / 3D Model Viewer</p>
+      <div class="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/60">
+        <div>
+          © 2026 EcoGreen Flora Inc. Tất cả quyền được bảo lưu. Thiết kế Modern Glassmorphism & WebXR.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="#hero" class="hover:text-white transition-colors">Về đầu trang ↑</a>
+        </div>
       </div>
+
     </div>
   </footer>
 
 
   <!-- ========================================================================= -->
-  <!-- 8. MODAL THÔNG BÁO GỬI ĐƠN HÀNG THÀNH CÔNG                                -->
+  <!-- 10. SUCCESS MODAL (FROSTED GLASS POP-UP MODAL)                             -->
   <!-- ========================================================================= -->
-  <div id="successModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="theme-bg-surface rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border theme-border text-center relative">
-      <button onclick="closeSuccessModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-600 p-1">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md hidden">
+    <div class="glass-panel max-w-lg w-full p-6 sm:p-8 space-y-5 text-center relative border border-white/30 shadow-2xl">
+      
+      <!-- Close button -->
+      <button 
+        onclick="closeSuccessModal()" 
+        aria-label="Đóng popup"
+        class="absolute top-4 right-4 p-2 rounded-xl text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
 
-      <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-[#4A943E] mx-auto flex items-center justify-center mb-3">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+      <!-- Checkmark Icon -->
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#4ADE80] to-[#186049] border-2 border-white/40 flex items-center justify-center text-white mx-auto shadow-lg shadow-emerald-950/40">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
       </div>
 
-      <h3 class="text-xl font-bold font-serif mb-2">Đặt Hàng & Tư Vấn Thành Công!</h3>
-      <p class="text-xs sm:text-sm theme-text-muted mb-4 leading-relaxed">
-        Cảm ơn bạn! Đơn hàng & Yêu cầu tư vấn cây cảnh đã được gửi thành công. Chuyên gia <strong>EcoGreen</strong> sẽ liên hệ trong <strong>15 phút</strong>.
-      </p>
-
-      <div id="modalOrderSummary" class="theme-bg-surface-alt p-3.5 rounded-xl border theme-border text-left text-xs space-y-1 mb-5">
-        <!-- Injected via JS -->
+      <div class="space-y-2">
+        <h3 class="text-2xl font-bold font-serif text-white">Đăng Ký Thành Công!</h3>
+        <p class="text-sm text-white/85">
+          Cảm ơn bạn đã lựa chọn <strong>EcoGreen Flora</strong>. Chuyên viên chăm sóc cây xanh sẽ gọi điện xác nhận trong vòng <strong>15 phút</strong>.
+        </p>
       </div>
 
-      <button onclick="closeSuccessModal()" class="w-full py-3 px-5 rounded-xl font-bold text-white bg-[#D98327] hover:bg-[#b86d1f] transition-all">
-        Đã Hiểu & Tiếp Tục Xem Cây
+      <!-- Order Summary Card inside modal -->
+      <div id="modalOrderSummary" class="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 text-left text-xs text-white/90 space-y-1.5 font-sans">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <button 
+        onclick="closeSuccessModal()" 
+        class="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-gradient-to-r from-[#D98327] to-[#e6933b] hover:from-[#b86d1f] shadow-md border border-white/20 text-sm active:scale-95 transition-all"
+      >
+        Hoàn Tất & Tiếp Tục Xem Cây
       </button>
+
     </div>
   </div>
 
 
   <!-- ========================================================================= -->
-  <!-- 9. JAVASCRIPT: DARK MODE TOGGLE, SLIDE DRAWER, 3D AR, FORM HANDLING       -->
+  <!-- 11. JAVASCRIPT XỬ LÝ TƯƠNG TÁC (TÍNH NĂNG ĐẦY ĐỦ 100%)                     -->
   <!-- ========================================================================= -->
   <script>
-    // --- 1. DARK MODE TOGGLE VỚI LOCALSTORAGE ---
+    // --- 1. DARK MODE / LIGHT MODE TOGGLE ---
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const moonIcon = document.getElementById('moonIcon');
     const sunIcon = document.getElementById('sunIcon');
-    const bodyEl = document.body;
-    const htmlEl = document.documentElement;
 
-    // Khởi tạo theme từ bộ nhớ thiết bị
-    function initTheme() {
-      const savedTheme = localStorage.getItem('ecogreen_theme');
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        applyDarkTheme(true);
-      } else {
-        applyDarkTheme(false);
-      }
-    }
-
-    function applyDarkTheme(isDark) {
-      if (isDark) {
-        bodyEl.classList.add('dark-theme');
-        htmlEl.classList.add('dark');
-        if (moonIcon && sunIcon) {
-          moonIcon.classList.add('hidden');
-          moonIcon.classList.remove('block');
-          sunIcon.classList.remove('hidden');
-          sunIcon.classList.add('block');
-        }
-        localStorage.setItem('ecogreen_theme', 'dark');
-      } else {
-        bodyEl.classList.remove('dark-theme');
-        htmlEl.classList.remove('dark');
-        if (moonIcon && sunIcon) {
-          sunIcon.classList.add('hidden');
-          sunIcon.classList.remove('block');
-          moonIcon.classList.remove('hidden');
-          moonIcon.classList.add('block');
-        }
-        localStorage.setItem('ecogreen_theme', 'light');
-      }
+    // Khởi tạo theme từ localStorage hoặc mặc định
+    const savedTheme = localStorage.getItem('ecogreen-theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+      if (moonIcon) moonIcon.classList.add('hidden');
+      if (sunIcon) sunIcon.classList.remove('hidden');
     }
 
     if (themeToggleBtn) {
       themeToggleBtn.addEventListener('click', () => {
-        const isCurrentDark = bodyEl.classList.contains('dark-theme');
-        applyDarkTheme(!isCurrentDark);
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        localStorage.setItem('ecogreen-theme', isDark ? 'dark' : 'light');
+
+        if (isDark) {
+          if (moonIcon) moonIcon.classList.add('hidden');
+          if (sunIcon) sunIcon.classList.remove('hidden');
+        } else {
+          if (moonIcon) moonIcon.classList.remove('hidden');
+          if (sunIcon) sunIcon.classList.add('hidden');
+        }
       });
     }
 
-    initTheme();
-
-    // --- 2. MOBILE HAMBURGER MENU & SLIDE-OUT DRAWER ---
+    // --- 2. MOBILE DRAWER NAVIGATION ---
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const closeDrawerBtn = document.getElementById('closeDrawerBtn');
     const mobileDrawer = document.getElementById('mobileDrawer');
@@ -1157,7 +1636,7 @@
       mobileDrawer.classList.remove('-translate-x-full');
       mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
       mobileBackdrop.classList.add('opacity-100', 'pointer-events-auto');
-      document.body.style.overflow = 'hidden'; // Ngăn cuộn nền khi mở menu
+      document.body.style.overflow = 'hidden';
     }
 
     function closeMobileDrawer() {
@@ -1172,7 +1651,6 @@
     if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeMobileDrawer);
     if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileDrawer);
 
-    // Đóng drawer khi người dùng click vào bất kỳ link nào trong menu
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
       link.addEventListener('click', closeMobileDrawer);
     });
@@ -1184,11 +1662,9 @@
 
       buttons.forEach(btn => {
         if (btn.getAttribute('data-category') === category) {
-          btn.classList.add('bg-[#186049]', 'text-white');
-          btn.classList.remove('theme-bg-surface-alt', 'theme-text-main');
+          btn.classList.add('active');
         } else {
-          btn.classList.remove('bg-[#186049]', 'text-white');
-          btn.classList.add('theme-bg-surface-alt', 'theme-text-main');
+          btn.classList.remove('active');
         }
       });
 
@@ -1229,8 +1705,8 @@
       }
 
       if (selectElement) {
-        selectElement.classList.add('ring-4', 'ring-[#D98327]/40');
-        setTimeout(() => { selectElement.classList.remove('ring-4', 'ring-[#D98327]/40'); }, 1500);
+        selectElement.classList.add('ring-4', 'ring-[#D98327]/60');
+        setTimeout(() => { selectElement.classList.remove('ring-4', 'ring-[#D98327]/60'); }, 1500);
       }
     }
 
@@ -1241,13 +1717,13 @@
     function toggleModelSpin() {
       if (!modelViewer) return;
       isSpinning = !isSpinning;
-      const btn = document.getElementById('toggleSpinBtn');
+      const spinBtnText = document.getElementById('spinBtnText');
       if (isSpinning) {
         modelViewer.setAttribute('auto-rotate', '');
-        if (btn) btn.textContent = 'Dừng xoay';
+        if (spinBtnText) spinBtnText.textContent = 'Dừng xoay';
       } else {
         modelViewer.removeAttribute('auto-rotate');
-        if (btn) btn.textContent = 'Bật tự xoay';
+        if (spinBtnText) spinBtnText.textContent = 'Bật tự xoay';
       }
     }
 
@@ -1274,7 +1750,7 @@
       const element = document.getElementById('clientElement').value;
       const note = document.getElementById('clientNote').value.trim();
 
-      // Kiểm tra điện thoại hợp lệ
+      // Kiểm tra điện thoại hợp lệ (10-11 số)
       const phoneRegex = /^[0-9]{10,11}$/;
       if (!phoneRegex.test(phone.replace(/\s+/g, ''))) {
         alert('Vui lòng nhập số điện thoại hợp lệ (10-11 số).');
@@ -1285,16 +1761,16 @@
       const summary = document.getElementById('modalOrderSummary');
       if (summary) {
         summary.innerHTML = `
-          <p><strong>Khách hàng:</strong> ${name}</p>
-          <p><strong>Số điện thoại:</strong> ${phone}</p>
-          <p><strong>Loại cây quan tâm:</strong> ${plant}</p>
-          <p><strong>Bản mệnh tư vấn:</strong> ${element}</p>
-          <p><strong>Địa chỉ nhận hàng:</strong> ${address}</p>
-          ${note ? `<p><strong>Ghi chú:</strong> ${note}</p>` : ''}
+          <p><strong class="text-white">Khách hàng:</strong> ${name}</p>
+          <p><strong class="text-white">Số điện thoại:</strong> ${phone}</p>
+          <p><strong class="text-[#4ADE80]">Cây đã chọn:</strong> ${plant}</p>
+          <p><strong class="text-white">Bản mệnh:</strong> ${element}</p>
+          <p><strong class="text-white">Địa chỉ giao:</strong> ${address}</p>
+          ${note ? `<p><strong class="text-white">Ghi chú:</strong> ${note}</p>` : ''}
         `;
       }
 
-      // Bật modal
+      // Mở modal
       const modal = document.getElementById('successModal');
       if (modal) modal.classList.remove('hidden');
 
